@@ -1,0 +1,24 @@
+{
+ "quiz_titles": [
+  {
+   "min": 0,
+   "title": "Needs More Friendship Training",
+   "emoji": "📚"
+  },
+  {
+   "min": 40,
+   "title": "Certified Partner in Crime",
+   "emoji": "😎"
+  },
+  {
+   "min": 70,
+   "title": "Best Friend Expert",
+   "emoji": "🏅"
+  },
+  {
+   "min": 90,
+   "title": "Friendship Legend",
+   "emoji": "👑"
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+{
+ "items": [
+  {
+   "q": "What do true friends do when you cry?",
+   "options": [
+    "Laugh, then hug",
+    "Ignore you",
+    "Post it online",
+    "Sell tickets"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "Who is the 'friend' who always says 'I'm 5 minutes away'?",
+   "options": [
+    "The punctual one",
+    "The one still in bed",
+    "The one in traffic",
+    "Nobody"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "What's the golden rule of the group chat?",
+   "options": [
+    "Never reply",
+    "Always reply 'lol'",
+    "Don't leave on read",
+    "Mute and run"
+   ],
+   "answer": 2
+  },
+  {
+   "q": "Best way to end an argument with a friend?",
+   "options": [
+    "Block them",
+    "Buy pizza",
+    "Write an essay",
+    "Move cities"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "What is a friend who eats your fries called?",
+   "options": [
+    "Enemy",
+    "Thief",
+    "Friend",
+    "Chef"
+   ],
+   "answer": 2
+  },
+  {
+   "q": "What's the most important ingredient of friendship?",
+   "options": [
+    "Wifi",
+    "Laughter",
+    "Selfies",
+    "Snacks (and laughter)"
+   ],
+   "answer": 3
+  },
+  {
+   "q": "What do you do when a friend is sad?",
+   "options": [
+    "Offer snacks and show up",
+    "Send a meme and run",
+    "Ignore",
+    "Message 'k'"
+   ],
+   "answer": 0
+  },
+  {
+   "q": "What's the first thing you do on a group trip?",
+   "options": [
+    "Argue about plans",
+    "Take a selfie",
+    "Find food",
+    "All of these"
+   ],
+   "answer": 3
+  },
+  {
+   "q": "What does 'We should meet sometime' mean?",
+   "options": [
+    "We'll meet tomorrow",
+    "Never",
+    "Next year, maybe",
+    "Tonight"
+   ],
+   "answer": 1
+  },
+  {
+   "q": "What is the best friendship superpower?",
+   "options": [
+    "Remembering birthdays",
+    "Keeping secrets",
+    "Making you laugh",
+    "All of these"
+   ],
+   "answer": 3
+  }
+ ]
+}

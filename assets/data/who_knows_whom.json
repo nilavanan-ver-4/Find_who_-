@@ -1,0 +1,94 @@
+{
+ "items": [
+  {
+   "q": "What's their favourite snack?",
+   "options": [
+    "Chips",
+    "Chocolate",
+    "Noodles",
+    "Fruit"
+   ]
+  },
+  {
+   "q": "How do they spend a free Sunday?",
+   "options": [
+    "Sleeping",
+    "Watching series",
+    "Going out",
+    "Gaming"
+   ]
+  },
+  {
+   "q": "What would they pick for dinner?",
+   "options": [
+    "Pizza",
+    "Biryani",
+    "Burgers",
+    "Salad"
+   ]
+  },
+  {
+   "q": "What's their biggest fear?",
+   "options": [
+    "Spiders",
+    "Exams",
+    "Heights",
+    "Being alone"
+   ]
+  },
+  {
+   "q": "Their dream holiday is...",
+   "options": [
+    "Beach",
+    "Mountains",
+    "City trip",
+    "Staycation"
+   ]
+  },
+  {
+   "q": "They reply to messages...",
+   "options": [
+    "Instantly",
+    "After hours",
+    "After days",
+    "What messages?"
+   ]
+  },
+  {
+   "q": "Their go-to music mood is...",
+   "options": [
+    "Party hits",
+    "Sad songs",
+    "Old classics",
+    "Lo-fi"
+   ]
+  },
+  {
+   "q": "In a group fight they would...",
+   "options": [
+    "Calm everyone",
+    "Add fuel",
+    "Hide",
+    "Order snacks"
+   ]
+  },
+  {
+   "q": "What do they do when bored?",
+   "options": [
+    "Scroll reels",
+    "Eat",
+    "Nap",
+    "Call a friend"
+   ]
+  },
+  {
+   "q": "Their superpower would be...",
+   "options": [
+    "Invisibility",
+    "Flying",
+    "Time travel",
+    "Mind reading"
+   ]
+  }
+ ]
+}

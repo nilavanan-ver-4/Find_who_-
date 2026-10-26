@@ -1,0 +1,1560 @@
+{
+ "categories": [
+  {
+   "id": "best_friends",
+   "name": "Best Friends",
+   "emoji": "🤝",
+   "color": "#FF6B9D"
+  },
+  {
+   "id": "bff_vs_bff",
+   "name": "BFF vs BFF",
+   "emoji": "🥊",
+   "color": "#7C4DFF"
+  },
+  {
+   "id": "awards",
+   "name": "Friendship Awards",
+   "emoji": "🏆",
+   "color": "#FFB300"
+  },
+  {
+   "id": "birthday",
+   "name": "Birthday Fun",
+   "emoji": "🎂",
+   "color": "#FF7043"
+  },
+  {
+   "id": "roast",
+   "name": "Roast Your Friend",
+   "emoji": "🔥",
+   "color": "#E53935"
+  },
+  {
+   "id": "attitude",
+   "name": "Funny Attitude",
+   "emoji": "😎",
+   "color": "#00ACC1"
+  },
+  {
+   "id": "single_committed",
+   "name": "Single vs Committed",
+   "emoji": "💔",
+   "color": "#8E24AA"
+  },
+  {
+   "id": "love_crush",
+   "name": "Love and Crush",
+   "emoji": "💘",
+   "color": "#EC407A"
+  },
+  {
+   "id": "couple",
+   "name": "Couple Fun",
+   "emoji": "👩‍❤️‍👨",
+   "color": "#F06292"
+  },
+  {
+   "id": "college",
+   "name": "College Memories",
+   "emoji": "🎓",
+   "color": "#3949AB"
+  },
+  {
+   "id": "office",
+   "name": "Office Friends",
+   "emoji": "💼",
+   "color": "#546E7A"
+  },
+  {
+   "id": "group",
+   "name": "Group Friendship",
+   "emoji": "👯",
+   "color": "#43A047"
+  },
+  {
+   "id": "dare",
+   "name": "Dare Challenges",
+   "emoji": "⚡",
+   "color": "#FB8C00"
+  },
+  {
+   "id": "truth_dare",
+   "name": "Truth or Dare",
+   "emoji": "🎯",
+   "color": "#D81B60"
+  },
+  {
+   "id": "savage",
+   "name": "Savage Quotes",
+   "emoji": "🗡️",
+   "color": "#212121"
+  },
+  {
+   "id": "mood",
+   "name": "Mood Posters",
+   "emoji": "🌈",
+   "color": "#26A69A"
+  },
+  {
+   "id": "friendship_day",
+   "name": "Friendship Day",
+   "emoji": "🎗️",
+   "color": "#1E88E5"
+  },
+  {
+   "id": "celebration",
+   "name": "Celebration",
+   "emoji": "🎉",
+   "color": "#FDD835"
+  },
+  {
+   "id": "meme",
+   "name": "Custom Meme Posters",
+   "emoji": "🤪",
+   "color": "#6D4C41"
+  }
+ ],
+ "templates": [
+  {
+   "id": "best_friends_1",
+   "category": "best_friends",
+   "title": "{a} & {b}",
+   "caption": "Best friends. Partners in crime. Zero shame.",
+   "emoji": "🤝",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "best_friends_2",
+   "category": "best_friends",
+   "title": "Friends who eat together stay together",
+   "caption": "{a} + {b} + food = forever",
+   "emoji": "🍕",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "best_friends_3",
+   "category": "best_friends",
+   "title": "My person",
+   "caption": "Not related, but I'd still share my fries with {b}",
+   "emoji": "🍟",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "best_friends_4",
+   "category": "best_friends",
+   "title": "Two idiots, one brain cell",
+   "caption": "{a} has it today, {b} has it tomorrow",
+   "emoji": "🧠",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "best_friends_5",
+   "category": "best_friends",
+   "title": "Ride or die",
+   "caption": "{a} and {b}: if one goes down, we both laugh",
+   "emoji": "🛵",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "bff_vs_bff_1",
+   "category": "bff_vs_bff",
+   "title": "{a} VS {b}",
+   "caption": "Who is the better best friend? Fight!",
+   "emoji": "🥊",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "bff_vs_bff_2",
+   "category": "bff_vs_bff",
+   "title": "The ultimate showdown",
+   "caption": "{a} the Loud vs {b} the Louder",
+   "emoji": "📢",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "bff_vs_bff_3",
+   "category": "bff_vs_bff",
+   "title": "Team {a} or Team {b}?",
+   "caption": "Pick a side. Choose wisely.",
+   "emoji": "⚔️",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "bff_vs_bff_4",
+   "category": "bff_vs_bff",
+   "title": "Who texts first?",
+   "caption": "{a}: never. {b}: never. Friendship: dead.",
+   "emoji": "📵",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "bff_vs_bff_5",
+   "category": "bff_vs_bff",
+   "title": "Rock Paper Scissors",
+   "caption": "Loser buys the snacks, {a} vs {b}",
+   "emoji": "✂️",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "awards_1",
+   "category": "awards",
+   "title": "Certified Best Friend",
+   "caption": "Awarded to {a} for tolerating all of us",
+   "emoji": "🏆",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "awards_2",
+   "category": "awards",
+   "title": "Professional Late Replier",
+   "caption": "Congrats {a}! Seen at 9:02, replied next week",
+   "emoji": "⏰",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "awards_3",
+   "category": "awards",
+   "title": "Permanent Food Inspector",
+   "caption": "{a} has tasted everything. Twice.",
+   "emoji": "🍔",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "awards_4",
+   "category": "awards",
+   "title": "Group Chat Ghost",
+   "caption": "{a} reads everything, replies never",
+   "emoji": "👻",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "none",
+   "textColor": "#212121",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "awards_5",
+   "category": "awards",
+   "title": "Human Google",
+   "caption": "{a} knows everything. Mostly wrong.",
+   "emoji": "🔍",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "awards_6",
+   "category": "awards",
+   "title": "Sleeping Champion",
+   "caption": "{a} sleeps through alarms, earthquakes and weddings",
+   "emoji": "😴",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "birthday_1",
+   "category": "birthday",
+   "title": "Happy Birthday {a}!",
+   "caption": "Another year older, still not wiser",
+   "emoji": "🎂",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "grid",
+   "textColor": "#212121",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "birthday_2",
+   "category": "birthday",
+   "title": "It's {a}'s Day!",
+   "caption": "Free cake for everyone, no excuses",
+   "emoji": "🍰",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "birthday_3",
+   "category": "birthday",
+   "title": "Level {a} unlocked",
+   "caption": "New age, same bad decisions",
+   "emoji": "🎮",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "birthday_4",
+   "category": "birthday",
+   "title": "Birthday Bumps incoming",
+   "caption": "{a}, you can run, but you can't hide",
+   "emoji": "🎈",
+   "colors": [
+    "#FFA726",
+    "#D84315"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "birthday_5",
+   "category": "birthday",
+   "title": "Old but gold",
+   "caption": "{a}: aged like fine wine and cheap cheese",
+   "emoji": "🧀",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "roast_1",
+   "category": "roast",
+   "title": "Roast Alert: {a}",
+   "caption": "Your WiFi has a better personality",
+   "emoji": "📶",
+   "colors": [
+    "#FFA726",
+    "#D84315"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": true
+  },
+  {
+   "id": "roast_2",
+   "category": "roast",
+   "title": "Dear {a}",
+   "caption": "You're the reason we have 'mute' button",
+   "emoji": "🔇",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "roast_3",
+   "category": "roast",
+   "title": "{a}'s brain loading...",
+   "caption": "Please wait. Please. Wait.",
+   "emoji": "⏳",
+   "colors": [
+    "#9CCC65",
+    "#33691E"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "roast_4",
+   "category": "roast",
+   "title": "Warning!",
+   "caption": "{a} is 90% drama and 10% snacks",
+   "emoji": "⚠️",
+   "colors": [
+    "#29B6F6",
+    "#6A1B9A"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "roast_5",
+   "category": "roast",
+   "title": "{a}, the legend",
+   "caption": "Legend of being late for everything",
+   "emoji": "🐢",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "attitude_1",
+   "category": "attitude",
+   "title": "Attitude loading",
+   "caption": "{a} doesn't do rules, only vibes",
+   "emoji": "😎",
+   "colors": [
+    "#29B6F6",
+    "#6A1B9A"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "attitude_2",
+   "category": "attitude",
+   "title": "No filter. No fear.",
+   "caption": "Just {a} being unapologetically extra",
+   "emoji": "💅",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "attitude_3",
+   "category": "attitude",
+   "title": "Too cool for school",
+   "caption": "Also too tired for school. - {a}",
+   "emoji": "🕶️",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": true
+  },
+  {
+   "id": "attitude_4",
+   "category": "attitude",
+   "title": "Main character mode",
+   "caption": "{a} is the hero of this story",
+   "emoji": "🌟",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "attitude_5",
+   "category": "attitude",
+   "title": "Be yourself",
+   "caption": "Unless you can be {a}. Then be {a}.",
+   "emoji": "👑",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "single_committed_1",
+   "category": "single_committed",
+   "title": "Single and Ready to Mingle",
+   "caption": "{a}: loves pizza, hates cooking",
+   "emoji": "🍕",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "single_committed_2",
+   "category": "single_committed",
+   "title": "Committed? No, comfortable.",
+   "caption": "{a} and the bed are in a serious relationship",
+   "emoji": "🛏️",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "single_committed_3",
+   "category": "single_committed",
+   "title": "Single Mode: ON",
+   "caption": "{a} has a 5-year plan: nap",
+   "emoji": "📴",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "single_committed_4",
+   "category": "single_committed",
+   "title": "Taken by food",
+   "caption": "{a}'s relationship status: it's complicated, with biryani",
+   "emoji": "🍛",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "single_committed_5",
+   "category": "single_committed",
+   "title": "Committed to Chaos",
+   "caption": "{a} loves {b}, but loves the last slice more",
+   "emoji": "🍰",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": true
+  },
+  {
+   "id": "love_crush_1",
+   "category": "love_crush",
+   "title": "{a} + {b}",
+   "caption": "Crush level: 100%. Courage level: 2%",
+   "emoji": "💘",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "love_crush_2",
+   "category": "love_crush",
+   "title": "Heart eyes only",
+   "caption": "{a} blushes every time {b} walks by",
+   "emoji": "😍",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "love_crush_3",
+   "category": "love_crush",
+   "title": "Love at first text",
+   "caption": "{a}, say hi. Don't be a coward.",
+   "emoji": "💌",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "love_crush_4",
+   "category": "love_crush",
+   "title": "Cupid is on leave",
+   "caption": "So {a} must act for themselves",
+   "emoji": "🏹",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "love_crush_5",
+   "category": "love_crush",
+   "title": "Crush Alert!",
+   "caption": "{a} has a crush. We all know it.",
+   "emoji": "💓",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "none",
+   "textColor": "#212121",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "couple_1",
+   "category": "couple",
+   "title": "{a} & {b}",
+   "caption": "Couple goals: fighting over the blanket",
+   "emoji": "🛏️",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "couple_2",
+   "category": "couple",
+   "title": "Cute couple alert",
+   "caption": "{a} and {b}: sickeningly sweet",
+   "emoji": "🥰",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "grid",
+   "textColor": "#212121",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "couple_3",
+   "category": "couple",
+   "title": "Partners in snacks",
+   "caption": "{a} feeds {b}. {b} eats all.",
+   "emoji": "🍿",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "couple_4",
+   "category": "couple",
+   "title": "Relationship status",
+   "caption": "{a} + {b} = stuck with each other",
+   "emoji": "🔗",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "couple_5",
+   "category": "couple",
+   "title": "Forever? We'll see.",
+   "caption": "{a} & {b} after one fight about pizza",
+   "emoji": "🍕",
+   "colors": [
+    "#FFA726",
+    "#D84315"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "college_1",
+   "category": "college",
+   "title": "Back benchers club",
+   "caption": "{a}: present in body, not in mind",
+   "emoji": "🎒",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "college_2",
+   "category": "college",
+   "title": "Attendance? What's that?",
+   "caption": "{a} and the proxy-giver legends",
+   "emoji": "📝",
+   "colors": [
+    "#FFA726",
+    "#D84315"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "college_3",
+   "category": "college",
+   "title": "Exam mode",
+   "caption": "{a}: 'I'll start studying tonight.' (Night before the exam)",
+   "emoji": "📚",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "college_4",
+   "category": "college",
+   "title": "Canteen regulars",
+   "caption": "{a}, {b} and the unlimited tea",
+   "emoji": "☕",
+   "colors": [
+    "#9CCC65",
+    "#33691E"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "college_5",
+   "category": "college",
+   "title": "Last bench legends",
+   "caption": "Remember the days, {a}? We miss them!",
+   "emoji": "🎓",
+   "colors": [
+    "#29B6F6",
+    "#6A1B9A"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "office_1",
+   "category": "office",
+   "title": "This meeting could've been an email",
+   "caption": "Signed, {a}",
+   "emoji": "📧",
+   "colors": [
+    "#9CCC65",
+    "#33691E"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "office_2",
+   "category": "office",
+   "title": "Coffee Break Champion",
+   "caption": "{a} leaves at 5:00, arrives at 9:59",
+   "emoji": "☕",
+   "colors": [
+    "#29B6F6",
+    "#6A1B9A"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "office_3",
+   "category": "office",
+   "title": "Team Player Award",
+   "caption": "{a} always joins when pizza arrives",
+   "emoji": "🍕",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "office_4",
+   "category": "office",
+   "title": "Deadline Survivor",
+   "caption": "{a}: it will be done by EOD. (Which EOD?)",
+   "emoji": "📅",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "office_5",
+   "category": "office",
+   "title": "Out of Office",
+   "caption": "{a} is mentally on vacation since Monday",
+   "emoji": "🏝️",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "group_1",
+   "category": "group",
+   "title": "The Squad",
+   "caption": "{a}, {b} and all our bad ideas",
+   "emoji": "👯",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": true
+  },
+  {
+   "id": "group_2",
+   "category": "group",
+   "title": "Group Chat Legends",
+   "caption": "500 unread messages and 3 meaningful ones",
+   "emoji": "💬",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "group_3",
+   "category": "group",
+   "title": "United by Chaos",
+   "caption": "One brain cell, passed around",
+   "emoji": "🧠",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "group_4",
+   "category": "group",
+   "title": "The Gang's All Here",
+   "caption": "We aren't loud, we are enthusiastic",
+   "emoji": "🎉",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "group_5",
+   "category": "group",
+   "title": "Friends forever",
+   "caption": "Who else would listen to our nonsense?",
+   "emoji": "🫶",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "dare_1",
+   "category": "dare",
+   "title": "DARE: {a}",
+   "caption": "Text your crush 'I like your cat'. You don't have a crush? Pick one.",
+   "emoji": "⚡",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "dare_2",
+   "category": "dare",
+   "title": "Dare accepted?",
+   "caption": "{a}, sing your favourite song in public. Loudly.",
+   "emoji": "🎤",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "dare_3",
+   "category": "dare",
+   "title": "Dare Time",
+   "caption": "{a}: do 10 pushups or buy everyone chai",
+   "emoji": "💪",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": true
+  },
+  {
+   "id": "dare_4",
+   "category": "dare",
+   "title": "Chicken or Champion?",
+   "caption": "{a}, eat a spoon of something weird",
+   "emoji": "🌶️",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "dare_5",
+   "category": "dare",
+   "title": "Double Dare",
+   "caption": "{a} dares {b}: speak in rhymes for 10 mins",
+   "emoji": "🎭",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "truth_dare_1",
+   "category": "truth_dare",
+   "title": "Truth or Dare?",
+   "caption": "{a}, choose wisely. Or don't.",
+   "emoji": "🎯",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "truth_dare_2",
+   "category": "truth_dare",
+   "title": "Spin & Tell",
+   "caption": "{a}: your most embarrassing moment. Go!",
+   "emoji": "🍾",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "truth_dare_3",
+   "category": "truth_dare",
+   "title": "Truth Time",
+   "caption": "{a}, who in this group would you ghost first?",
+   "emoji": "🔎",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "grid",
+   "textColor": "#212121",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "truth_dare_4",
+   "category": "truth_dare",
+   "title": "No skips allowed",
+   "caption": "{a}, dare is on! (Skip costs a chocolate)",
+   "emoji": "🍫",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "truth_dare_5",
+   "category": "truth_dare",
+   "title": "Truth bomb",
+   "caption": "{a}, tell us a secret. A small one.",
+   "emoji": "💣",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": true
+  },
+  {
+   "id": "savage_1",
+   "category": "savage",
+   "title": "Silence is golden",
+   "caption": "Duct tape is silver. {a} needs both.",
+   "emoji": "🤐",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "savage_2",
+   "category": "savage",
+   "title": "I'm not arguing",
+   "caption": "I'm just explaining why {a} is wrong",
+   "emoji": "🗣️",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "savage_3",
+   "category": "savage",
+   "title": "Sarcasm is free",
+   "caption": "Insults cost extra, {a}",
+   "emoji": "💸",
+   "colors": [
+    "#FFA726",
+    "#D84315"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "savage_4",
+   "category": "savage",
+   "title": "Be a pineapple",
+   "caption": "{a}: stand tall, wear a crown, be sweet inside",
+   "emoji": "🍍",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "savage_5",
+   "category": "savage",
+   "title": "Plot twist",
+   "caption": "{a} was the villain all along",
+   "emoji": "🎬",
+   "colors": [
+    "#9CCC65",
+    "#33691E"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "mood_1",
+   "category": "mood",
+   "title": "Mood: Hungry",
+   "caption": "{a} when the delivery guy is 5 minutes away",
+   "emoji": "🍜",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "mood_2",
+   "category": "mood",
+   "title": "Mood: Sleepy",
+   "caption": "{a} at 9 AM, 12 PM, 3 PM and 8 PM",
+   "emoji": "😪",
+   "colors": [
+    "#9CCC65",
+    "#33691E"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": true
+  },
+  {
+   "id": "mood_3",
+   "category": "mood",
+   "title": "Mood: Savage",
+   "caption": "{a} on a Monday",
+   "emoji": "😤",
+   "colors": [
+    "#29B6F6",
+    "#6A1B9A"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "mood_4",
+   "category": "mood",
+   "title": "Mood: Vacation",
+   "caption": "{a}, please book the tickets this time",
+   "emoji": "✈️",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "mood_5",
+   "category": "mood",
+   "title": "Mood: Overthinking",
+   "caption": "{a} at 3 AM: why did I say that in 2016?",
+   "emoji": "🌀",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "friendship_day_1",
+   "category": "friendship_day",
+   "title": "Happy Friendship Day!",
+   "caption": "{a}, thanks for being my favourite human",
+   "emoji": "🎗️",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "friendship_day_2",
+   "category": "friendship_day",
+   "title": "Friends are family",
+   "caption": "{a} & {b}, you're stuck with me forever",
+   "emoji": "💞",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "friendship_day_3",
+   "category": "friendship_day",
+   "title": "To the best of friends",
+   "caption": "{a}, I wouldn't trade you for anything. Maybe for a pizza.",
+   "emoji": "🍕",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "friendship_day_4",
+   "category": "friendship_day",
+   "title": "Bracelet goals",
+   "caption": "{a}, my wrist is ready. Where's mine?",
+   "emoji": "📿",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": true
+  },
+  {
+   "id": "friendship_day_5",
+   "category": "friendship_day",
+   "title": "Cheers to us",
+   "caption": "{a}, {b}, thank you for every laugh",
+   "emoji": "🥂",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "celebration_1",
+   "category": "celebration",
+   "title": "Congratulations {a}!",
+   "caption": "Party time! Snacks are on you!",
+   "emoji": "🎉",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "none",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "celebration_2",
+   "category": "celebration",
+   "title": "You did it!",
+   "caption": "{a}, the whole gang is proud (and hungry)",
+   "emoji": "🏅",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "celebration_3",
+   "category": "celebration",
+   "title": "Party Mode: ON",
+   "caption": "{a}, bring the music, we'll bring the noise",
+   "emoji": "🎶",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "celebration_4",
+   "category": "celebration",
+   "title": "Cheers!",
+   "caption": "To {a}, the reason for tonight's chaos",
+   "emoji": "🍾",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "celebration_5",
+   "category": "celebration",
+   "title": "New Job, New You",
+   "caption": "{a}: treat is pending, remember?",
+   "emoji": "💼",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "meme_1",
+   "category": "meme",
+   "title": "When {a} says 'I'm 5 mins away'",
+   "caption": "...and is still in bed",
+   "emoji": "🛌",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": true
+  },
+  {
+   "id": "meme_2",
+   "category": "meme",
+   "title": "Me: I'll sleep early",
+   "caption": "Also me at 3 AM: let's watch 'just one' episode",
+   "emoji": "🌙",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "meme_3",
+   "category": "meme",
+   "title": "Nobody:",
+   "caption": "Absolutely nobody: {a}: 'Let's go for a quick trip!'",
+   "emoji": "🧳",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "cursive",
+   "trending": false
+  },
+  {
+   "id": "meme_4",
+   "category": "meme",
+   "title": "Expectation vs Reality",
+   "caption": "Expectation: {a} diet. Reality: biryani",
+   "emoji": "🍛",
+   "colors": [
+    "#FFEE58",
+    "#F57F17"
+   ],
+   "pattern": "grid",
+   "textColor": "#212121",
+   "font": "monospace",
+   "trending": false
+  },
+  {
+   "id": "meme_5",
+   "category": "meme",
+   "title": "Brain: Sleep now",
+   "caption": "{a}: remembers embarrassing moment from 2012",
+   "emoji": "🧠",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "decks": [
+  {
+   "id": "classic",
+   "title": "Most Likely To",
+   "emoji": "🙋",
+   "items": [
+    "Most likely to become famous?",
+    "Most likely to get lost with GPS on?",
+    "Most likely to laugh at the wrong time?",
+    "Most likely to forget their own birthday?",
+    "Most likely to survive a zombie apocalypse?",
+    "Most likely to become a millionaire?",
+    "Most likely to adopt 10 cats?",
+    "Most likely to cry at a movie?",
+    "Most likely to win a quiz show?",
+    "Most likely to start a business?"
+   ]
+  },
+  {
+   "id": "reply_late",
+   "title": "Reply Late Champion",
+   "emoji": "🐌",
+   "items": [
+    "Most likely to reply after 3 days?",
+    "Most likely to say 'sorry, just saw this'?",
+    "Most likely to leave you on 'seen'?",
+    "Most likely to read the message and forget to reply?",
+    "Most likely to reply with just 'k'?",
+    "Most likely to have 99+ unread chats?",
+    "Most likely to reply 'lol' to a serious message?",
+    "Most likely to call back after a week?"
+   ]
+  },
+  {
+   "id": "drama",
+   "title": "Drama King or Queen",
+   "emoji": "👑",
+   "items": [
+    "Who is the drama king or queen of the group?",
+    "Most likely to cry over a small fight?",
+    "Most likely to turn a small story into a Bollywood scene?",
+    "Most likely to say 'I'm fine' when they're not?",
+    "Most likely to make a big entrance?",
+    "Most likely to stir up an argument for fun?",
+    "Most likely to leave the group chat dramatically (and rejoin)?",
+    "Most likely to create a story out of nothing?"
+   ]
+  },
+  {
+   "id": "hungry",
+   "title": "Always Hungry",
+   "emoji": "🍔",
+   "items": [
+    "Who is always hungry?",
+    "Most likely to finish your food when you're not looking?",
+    "Most likely to ask 'what's for dinner?' right after lunch?",
+    "Most likely to eat 3 meals before noon?",
+    "Most likely to order food at 2 AM?",
+    "Most likely to share their fries? (Never!)",
+    "Most likely to scout restaurants on trips?",
+    "Most likely to carry snacks in their bag?"
+   ]
+  },
+  {
+   "id": "dramatic",
+   "title": "Most Dramatic Friend",
+   "emoji": "🎭",
+   "items": [
+    "Most dramatic friend in the group?",
+    "Most likely to say 'I'm dying' about a paper cut?",
+    "Most likely to faint at a spider?",
+    "Most likely to give an Oscar-worthy speech after winning a board game?",
+    "Most likely to say 'this is the worst day ever' weekly?",
+    "Most likely to make a TikTok about a minor inconvenience?",
+    "Most likely to write a 5-paragraph text over a small misunderstanding?",
+    "Most likely to say 'you changed' for no reason?"
+   ]
+  }
+ ]
+}

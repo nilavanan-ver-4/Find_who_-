@@ -1,0 +1,169 @@
+{
+ "items": [
+  {
+   "emoji": "🦁👑",
+   "answer": "Lion King",
+   "options": [
+    "Lion King",
+    "Jungle Book",
+    "Madagascar",
+    "Tarzan"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🕷️🧍",
+   "answer": "Spider-Man",
+   "options": [
+    "Ant-Man",
+    "Spider-Man",
+    "Batman",
+    "Hulk"
+   ],
+   "correct": 1
+  },
+  {
+   "emoji": "🍕🐢",
+   "answer": "Ninja Turtles",
+   "options": [
+    "Ninja Turtles",
+    "Ratatouille",
+    "Kung Fu Panda",
+    "Frozen"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🧊👸",
+   "answer": "Frozen",
+   "options": [
+    "Cinderella",
+    "Tangled",
+    "Frozen",
+    "Moana"
+   ],
+   "correct": 2
+  },
+  {
+   "emoji": "🚢💔",
+   "answer": "Titanic",
+   "options": [
+    "Titanic",
+    "Avatar",
+    "Jaws",
+    "Poseidon"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🧙⚡",
+   "answer": "Harry Potter",
+   "options": [
+    "Harry Potter",
+    "Lord of the Rings",
+    "Narnia",
+    "Merlin"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🐠🔍",
+   "answer": "Finding Nemo",
+   "options": [
+    "Moana",
+    "Finding Nemo",
+    "Shark Tale",
+    "Aquaman"
+   ],
+   "correct": 1
+  },
+  {
+   "emoji": "🦇🃏",
+   "answer": "Joker",
+   "options": [
+    "Joker",
+    "Batman",
+    "Gotham",
+    "Venom"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🏠🎈",
+   "answer": "Up",
+   "options": [
+    "Up",
+    "Home",
+    "Balloon Boy",
+    "Coco"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🍔🎤",
+   "answer": "Burger King",
+   "options": [
+    "Burger King",
+    "McDonald's",
+    "KFC",
+    "Subway"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🌍🔥",
+   "answer": "Global Warming",
+   "options": [
+    "Global Warming",
+    "Volcano",
+    "Sunny day",
+    "Summer"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "📱🔋",
+   "answer": "Low Battery",
+   "options": [
+    "Low Battery",
+    "New Phone",
+    "Charger",
+    "Ringtone"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "🐒🍌",
+   "answer": "Monkey Business",
+   "options": [
+    "Monkey Business",
+    "Banana Split",
+    "Zoo",
+    "Jungle"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "👻🚫",
+   "answer": "Ghostbusters",
+   "options": [
+    "Ghostbusters",
+    "Casper",
+    "Scream",
+    "Boo"
+   ],
+   "correct": 0
+  },
+  {
+   "emoji": "⭐🎤",
+   "answer": "Rockstar",
+   "options": [
+    "Rockstar",
+    "Idol",
+    "Superstar",
+    "Film Star"
+   ],
+   "correct": 0
+  }
+ ]
+}

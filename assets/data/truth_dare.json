@@ -1,0 +1,304 @@
+{
+ "levels": [
+  "easy",
+  "medium",
+  "spicy"
+ ],
+ "categories": [
+  "funny",
+  "friends",
+  "food",
+  "embarrassing",
+  "creative"
+ ],
+ "items": [
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "funny",
+   "text": "What is the silliest thing you believed as a kid?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "funny",
+   "text": "What's your most embarrassing nickname?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "funny",
+   "text": "What song do you secretly love but never admit?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "funny",
+   "text": "What's the weirdest food combo you enjoy?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "friends",
+   "text": "Who in this group do you text the most?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "friends",
+   "text": "What is your favourite memory with this group?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "friends",
+   "text": "Which friend gives the best advice?"
+  },
+  {
+   "type": "truth",
+   "level": "easy",
+   "category": "friends",
+   "text": "Who here would you call at 3 AM?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "embarrassing",
+   "text": "What is the most embarrassing thing in your phone gallery?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "embarrassing",
+   "text": "When did you last cry-laugh in public?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "embarrassing",
+   "text": "What is your most cringe-worthy school memory?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "embarrassing",
+   "text": "What is the worst gift you ever received?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "friends",
+   "text": "Which friend is the worst at replying?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "friends",
+   "text": "Who is the most dramatic in this group?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "friends",
+   "text": "Which friend would survive a zombie apocalypse?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "friends",
+   "text": "Which friend do you think will get married first?"
+  },
+  {
+   "type": "truth",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "What is a lie you told that got out of control?"
+  },
+  {
+   "type": "truth",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "What was your most awkward crush moment?"
+  },
+  {
+   "type": "truth",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "What's the longest you've gone without showering?"
+  },
+  {
+   "type": "truth",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "What is the silliest fight you've ever had?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "food",
+   "text": "What's the weirdest thing you've eaten?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "food",
+   "text": "Would you give up pizza for a month for a million rupees?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "food",
+   "text": "What's your guilty pleasure snack?"
+  },
+  {
+   "type": "truth",
+   "level": "medium",
+   "category": "food",
+   "text": "What dish do you burn every time?"
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "funny",
+   "text": "Talk like a robot for 2 minutes."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "funny",
+   "text": "Do your best chicken dance."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "funny",
+   "text": "Say the alphabet backwards. Fast!"
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "funny",
+   "text": "Speak in a funny accent for the next 3 rounds."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "creative",
+   "text": "Make up a 4-line rhyme about the person on your left."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "creative",
+   "text": "Draw the player on your right in 30 seconds."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "creative",
+   "text": "Invent a handshake with someone."
+  },
+  {
+   "type": "dare",
+   "level": "easy",
+   "category": "creative",
+   "text": "Narrate your next 3 actions like a sports commentator."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "funny",
+   "text": "Do 10 jumping jacks while singing a song."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "funny",
+   "text": "Let the group give you a funny nickname for the rest of the game."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "funny",
+   "text": "Act like a monkey until your next turn."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "funny",
+   "text": "Walk like a runway model across the room."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "friends",
+   "text": "Compliment every player in the most dramatic way possible."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "friends",
+   "text": "Let another player post a harmless emoji status for you."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "friends",
+   "text": "Swap seats and imitate the person you sit next to."
+  },
+  {
+   "type": "dare",
+   "level": "medium",
+   "category": "friends",
+   "text": "Give a 30-second motivational speech to a spoon."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "Let someone draw a moustache on you with a washable marker."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "Sing the chorus of any song at full volume."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "Show the last photo you took to everyone."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "embarrassing",
+   "text": "Do your best dramatic movie death scene."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "food",
+   "text": "Eat a spoonful of something chosen by the group (safe, edible!)."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "food",
+   "text": "Drink a glass of water without using your hands."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "food",
+   "text": "Make up a dish name and sell it like a TV host."
+  },
+  {
+   "type": "dare",
+   "level": "spicy",
+   "category": "food",
+   "text": "Let the group mix you a snack combo. You must eat one bite."
+  }
+ ]
+}
