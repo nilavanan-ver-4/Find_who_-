@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find Who? Fun Posters</title>
+<style>
+:root{--bg:#14121f;--fg:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;padding:16px}
+h1{text-align:center;margin:8px 0 4px;font-size:2rem}
+p.sub{text-align:center;opacity:.75;margin:0 0 16px}
+.bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+button{border:0;border-radius:999px;padding:10px 16px;font-weight:700;cursor:pointer;background:#ffd23f;color:#222}
+button.alt{background:#2c2a3f;color:#fff}
+button.on{outline:3px solid #fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;max-width:1100px;margin:auto}
+.poster{aspect-ratio:3/4;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;cursor:pointer;color:#fff;box-shadow:0 6px 18px #0006;transition:transform .15s}
+.poster:hover{transform:rotate(-1.5deg) scale(1.03)}
+.poster .tag{font-weight:800;letter-spacing:.15em;font-size:.8rem;opacity:.9}
+.poster .emoji{font-size:4rem}
+.poster .q{font-size:1.35rem;font-weight:900;line-height:1.2;text-shadow:2px 2px 0 #0004}
+.poster .foot{font-size:.75rem;opacity:.85}
+dialog{border:0;border-radius:20px;padding:16px;background:#1f1d2e;color:#fff;max-width:92vw}
+dialog::backdrop{background:#000b}
+dialog canvas{width:min(80vw,360px);height:auto;border-radius:12px;display:block;margin:0 auto 12px}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<h1>🕵️ Find Who?</h1>
+<p class="sub">Pick a poster, share it in the group chat, and everyone points at the culprit!</p>
+<div class="bar" id="bar"></div>
+<div class="grid" id="grid"></div>
+<dialog id="dlg"><canvas id="cv" width="720" height="960"></canvas>
+<div class="row"><button id="dl">⬇ Download</button><button id="sh" class="alt">📤 Share</button><button id="rnd" class="alt">🎲 Another</button><button id="cl" class="alt">Close</button></div></dialog>
+
+<script>
+const THEMES={
+  Funny:["#ff4d6d","#c9184a"],Foodie:["#ff9f1c","#e36414"],Chaos:["#7b2cbf","#3c096c"],
+  Squad:["#06a77d","#046e52"],Savage:["#1d3557","#0b132b"]
+};
+const P=[
+["Funny","😂","Find who laughs at their own jokes the most"],
+["Funny","🤣","Find who has the loudest laugh"],
+["Funny","🙈","Find who tells the worst jokes"],
+["Funny","📸","Find who has 1000 blurry photos on their phone"],
+["Funny","🎤","Find who sings in the shower"],
+["Funny","💃","Find who dances like nobody's watching"],
+["Foodie","🍕","Find who would trade anything for pizza"],
+["Foodie","🍫","Find who eats the last piece and says nothing"],
+["Foodie","🍜","Find who orders food at 2 AM"],
+["Foodie","☕","Find who can't function without coffee"],
+["Foodie","🥘","Find who 'forgot' their wallet at the restaurant"],
+["Foodie","🍔","Find who says 'just one bite' and eats half"],
+["Chaos","⏰","Find who is always late"],
+["Chaos","📱","Find who replies after 3 business days"],
+["Chaos","🛌","Find who snoozes alarm 10 times"],
+["Chaos","🔋","Find who always has 1% battery"],
+["Chaos","🧭","Find who gets lost with GPS on"],
+["Chaos","🗑️","Find who has 47 unread messages and 12 groups muted"],
+["Squad","👑","Find who would rule the group if we had a king"],
+["Squad","🤫","Find who keeps every secret"],
+["Squad","🎬","Find who would survive a horror movie"],
+["Squad","🚀","Find who plans the trips but never goes"],
+["Squad","💸","Find who is always 'broke' but buys the latest gadget"],
+["Squad","🧠","Find who gives the best advice"],
+["Savage","😴","Find who falls asleep first at a sleepover"],
+["Savage","🕶️","Find who thinks they're the main character"],
+["Savage","🐍","Find who would betray us for free food"],
+["Savage","🎭","Find who is dramatic about everything"],
+["Savage","👻","Find who ghosts everyone then comes back with 'hey stranger'"],
+["Savage","🤡","Find who would sign up for a fight and cancel at the last minute"]
+];
+const cats=["All",...Object.keys(THEMES)];
+let cur="All",idx=0;
+const $=id=>document.getElementById(id);
+function shown(){return P.filter(p=>cur=="All"||p[0]==cur)}
+function bar(){$("bar").innerHTML="";cats.forEach(c=>{const b=document.createElement("button");b.textContent=c;b.className=c==cur?"on":"alt";b.onclick=()=>{cur=c;bar();grid()};$("bar").append(b)});
+ const r=document.createElement("button");r.textContent="🎲 Surprise me";r.onclick=()=>open(P.indexOf(P[Math.random()*P.length|0]));$("bar").append(r)}
+function grid(){$("grid").innerHTML="";shown().forEach(p=>{const i=P.indexOf(p);const d=document.createElement("div");d.className="poster";
+ d.style.background=`linear-gradient(160deg,${THEMES[p[0]][0]},${THEMES[p[0]][1]})`;
+ d.innerHTML=`<div class="tag">WANTED · ${p[0].toUpperCase()}</div><div class="emoji">${p[1]}</div><div class="q">${p[2]}</div><div class="foot">Tag them in the chat 👇</div>`;
+ d.onclick=()=>open(i);$("grid").append(d)})}
+function wrap(ctx,t,x,y,w,lh){const ws=t.split(" ");let l="";for(const s of ws){const n=l?l+" "+s:s;if(ctx.measureText(n).width>w&&l){ctx.fillText(l,x,y);l=s;y+=lh}else l=n}ctx.fillText(l,x,y)}
+function draw(i){const p=P[i],c=$("cv"),x=c.getContext("2d"),[a,b]=THEMES[p[0]];
+ const g=x.createLinearGradient(0,0,720,960);g.addColorStop(0,a);g.addColorStop(1,b);x.fillStyle=g;x.fillRect(0,0,720,960);
+ x.strokeStyle="#fff8";x.lineWidth=8;x.setLineDash([24,14]);x.strokeRect(28,28,664,904);x.setLineDash([]);
+ x.fillStyle="#fff";x.textAlign="center";x.font="800 40px system-ui,sans-serif";x.fillText("WANTED · "+p[0].toUpperCase(),360,120);
+ x.font="260px system-ui,'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji'";x.fillText(p[1],360,420);
+ x.font="900 64px system-ui,sans-serif";x.shadowColor="#0006";x.shadowOffsetX=4;x.shadowOffsetY=4;wrap(x,p[2],360,560,600,76);x.shadowColor="transparent";
+ x.font="700 34px system-ui,sans-serif";x.fillText("Tag them in the chat 👇",360,890)}
+function open(i){idx=i;draw(i);$("dlg").showModal()}
+$("cl").onclick=()=>$("dlg").close();
+$("rnd").onclick=()=>{idx=Math.random()*P.length|0;draw(idx)};
+$("dl").onclick=()=>{const a=document.createElement("a");a.download="find-who-"+idx+".png";a.href=$("cv").toDataURL("image/png");a.click()};
+$("sh").onclick=()=>$("cv").toBlob(async bl=>{const f=new File([bl],"find-who.png",{type:"image/png"});
+ try{if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],text:P[idx][2]+"?"});else $("dl").click()}catch(e){}});
+bar();grid();
+</script>
+</body>
+</html>
