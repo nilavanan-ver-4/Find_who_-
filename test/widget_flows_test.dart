@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
@@ -302,6 +303,170 @@ void main() {
         await tester.pumpAndSettle();
         expect(tester.takeException(), isNull, reason: '$loc at $size');
       }
+    }
+  });
+  Future<void> pumpEditor(WidgetTester tester, PosterDoc doc) async {
+    usePhoneSize(tester);
+    await tester.pumpWidget(ProviderScope(
+      overrides: (await buildTestApp()).overrides,
+      child: MaterialApp(home: EditorScreen(args: EditorArgs(doc: doc, title: 'Test'))),
+    ));
+    await tester.pumpAndSettle();
+  }
+
+  Finder onPoster(String text) =>
+      find.descendant(of: find.byType(PosterView), matching: find.text(text));
+
+  PosterDoc birthdayDoc({String? photo}) => PosterDoc.fromTemplate(
+        loadTestContent().templateById('birthday_1')!,
+        inputs: const PosterInputs(nameA: 'Riya'),
+        photoPath: photo,
+      );
+
+  testWidgets('editor: dragging text moves it and undo puts it back', (tester) async {
+    await pumpEditor(tester, birthdayDoc());
+    final finder = onPoster('Happy Birthday Riya!');
+    final before = tester.getCenter(finder);
+    await tester.drag(finder, const Offset(0, -90));
+    await tester.pumpAndSettle();
+    final after = tester.getCenter(finder);
+    expect(after.dy, lessThan(before.dy - 60));
+    expect(after.dx, closeTo(before.dx, 2));
+    await tester.tap(find.byTooltip('Undo'));
+    await tester.pumpAndSettle();
+    expect(tester.getCenter(finder).dy, closeTo(before.dy, 2));
+  });
+
+  testWidgets('editor: dragged text can never leave the poster', (tester) async {
+    await pumpEditor(tester, birthdayDoc());
+    final poster = tester.getRect(find.byType(PosterView));
+    final finder = onPoster('Happy Birthday Riya!');
+    await tester.drag(finder, const Offset(900, -900));
+    await tester.pumpAndSettle();
+    final r = tester.getRect(finder);
+    expect(poster.inflate(1).contains(r.topLeft), isTrue);
+    expect(poster.inflate(1).contains(r.bottomRight), isTrue);
+    expect(r.center.dx, greaterThan(poster.center.dx - 1)); // it did move (or sits at the edge)
+  });
+
+  testWidgets('editor: pinch resizes the selected element', (tester) async {
+    await pumpEditor(tester, birthdayDoc());
+    final finder = onPoster('Happy Birthday Riya!');
+    final c = tester.getCenter(finder);
+    final before = tester.getSize(finder);
+    final g1 = await tester.startGesture(c - const Offset(20, 0));
+    final g2 = await tester.startGesture(c + const Offset(20, 0));
+    await tester.pump();
+    await g1.moveTo(c - const Offset(50, 0));
+    await g2.moveTo(c + const Offset(50, 0));
+    await tester.pump();
+    await g1.up();
+    await g2.up();
+    await tester.pumpAndSettle();
+    expect(tester.getSize(finder).height, greaterThan(before.height * 1.3));
+  });
+
+  testWidgets('editor: corner handle resizes and the delete handle removes the element', (tester) async {
+    await pumpEditor(tester, birthdayDoc());
+    final finder = onPoster('Happy Birthday Riya!');
+    await tester.tap(finder);
+    await tester.pumpAndSettle();
+    final before = tester.getSize(finder).height;
+    final handle = find.byIcon(Icons.open_in_full);
+    expect(handle, findsOneWidget);
+    final g = await tester.startGesture(tester.getCenter(handle));
+    await g.moveBy(const Offset(30, 30));
+    await tester.pump();
+    await g.moveBy(const Offset(40, 40));
+    await tester.pump();
+    await g.up();
+    await tester.pumpAndSettle();
+    expect(tester.getSize(finder).height, isNot(closeTo(before, 0.5)));
+    await tester.tap(find.byIcon(Icons.close));
+    await tester.pumpAndSettle();
+    expect(finder, findsNothing);
+    await tester.tap(find.byTooltip('Undo'));
+    await tester.pumpAndSettle();
+    expect(finder, findsOneWidget);
+  });
+
+  testWidgets('editor: drag a sticker from the panel and drop it on the poster', (tester) async {
+    await pumpEditor(tester, birthdayDoc());
+    await tester.tap(find.text('Stickers'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('hold and drag'), findsOneWidget);
+    final tile = find.text('🔥');
+    final target = tester.getRect(find.byType(PosterView)).center + const Offset(0, 120);
+    final g = await tester.startGesture(tester.getCenter(tile));
+    await tester.pump(const Duration(milliseconds: 700));
+    await g.moveTo(target);
+    await tester.pump();
+    expect(find.text('Drop it here'), findsOneWidget);
+    await g.up();
+    await tester.pumpAndSettle();
+    expect(find.text('Drop it here'), findsNothing);
+    final dropped = onPoster('🔥');
+    expect(dropped, findsOneWidget);
+    expect((tester.getCenter(dropped) - target).distance, lessThan(30));
+  });
+
+  testWidgets('editor: photo tool shows image controls for a selected photo', (tester) async {
+    await pumpEditor(tester, birthdayDoc(photo: '/does/not/exist.jpg'));
+    // Select the photo from the layer chips in the Text tool, then open the Photo tool.
+    await tester.tap(find.text('📷 Photo'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(InkWell, 'Photo').first);
+    await tester.pumpAndSettle();
+    expect(find.text('Add photo'), findsOneWidget);
+    expect(find.text('Replace'), findsOneWidget);
+    await tester.tap(find.text('Circle'));
+    await tester.pumpAndSettle();
+    await tester.drag(find.text('Add photo'), const Offset(0, -200));
+    await tester.pumpAndSettle();
+    for (final label in ['Flip', 'Rotate 90°', 'Reset look']) {
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.byTooltip('Undo'));
+    await tester.pumpAndSettle();
+    await tester.drag(find.text('Flip'), const Offset(0, 300));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Delete photo'));
+    await tester.pumpAndSettle();
+    expect(find.text('Replace'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('photo element renders (all shapes, flip, adjustments) and exports without errors', (tester) async {
+    usePhoneSize(tester);
+    // Make a real PNG on disk.
+    final file = await tester.runAsync(() async {
+      final rec = ui.PictureRecorder();
+      final canvas = Canvas(rec);
+      canvas.drawRect(const Rect.fromLTWH(0, 0, 200, 150), Paint()..color = const Color(0xFF2E7D32));
+      canvas.drawCircle(const Offset(60, 60), 30, Paint()..color = const Color(0xFFFFEB3B));
+      final img = await rec.endRecording().toImage(200, 150);
+      final bytes = (await img.toByteData(format: ui.ImageByteFormat.png))!;
+      final f = File('${Directory.systemTemp.path}/findwho_test_photo.png');
+      await f.writeAsBytes(bytes.buffer.asUint8List());
+      return f;
+    });
+    addTearDown(() => file!.deleteSync());
+
+    for (final shape in PhotoShape.values) {
+      final key = GlobalKey();
+      final base = birthdayDoc(photo: file!.path);
+      final photo = base.elements.first.copyWith(
+          shape: shape, flipped: true, rotation: 0.3, brightness: 0.2, saturation: 0.4, aspect: 4 / 3);
+      final doc = base.updateElement(photo);
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(body: Center(child: SizedBox(width: 300, child: RepaintBoundary(key: key, child: PosterView(doc: doc))))),
+      ));
+      await tester.runAsync(() async => Future<void>.delayed(const Duration(milliseconds: 300)));
+      await tester.pump();
+      final png = await tester.runAsync(() => PosterExporter.capturePng(key));
+      expect(png!.length, greaterThan(5000), reason: shape.name);
+      expect(tester.takeException(), isNull, reason: shape.name);
+      expect(find.byIcon(Icons.broken_image_outlined), findsNothing, reason: shape.name);
     }
   });
 }

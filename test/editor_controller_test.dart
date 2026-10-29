@@ -64,4 +64,44 @@ void main() {
     c.undo();
     expect(c.doc.elementById('caption'), isNotNull);
   });
+  test('photos: add behind everything, replace, undo', () {
+    final c = EditorController(base());
+    expect(c.addPhoto('/a.jpg'), isNull);
+    expect(c.doc.elements.first.isPhoto, isTrue);
+    expect(c.selected!.isPhoto, isTrue);
+    c.replacePhoto('/b.jpg');
+    expect(c.selected!.text, '/b.jpg');
+    c.undo();
+    expect(c.selected!.text, '/a.jpg');
+    c.undo();
+    expect(c.doc.elements.any((e) => e.isPhoto), isFalse);
+  });
+
+  test('moveTo keeps the whole element inside the poster', () {
+    final c = EditorController(base());
+    final id = c.doc.elements.first.id;
+    c.moveTo(id, -2, 5, halfW: 0.2, halfH: 0.1);
+    expect(c.doc.elementById(id)!.dx, closeTo(0.2, 1e-9));
+    expect(c.doc.elementById(id)!.dy, closeTo(0.9, 1e-9));
+    c.moveTo(id, 0.9, 0.1, halfW: 0.7, halfH: 0.1); // wider than the poster -> centred
+    expect(c.doc.elementById(id)!.dx, 0.5);
+  });
+
+  test('drag and drop adds a sticker exactly where it was dropped', () {
+    final c = EditorController(base());
+    expect(c.addStickerAt('😂', 0.3, 0.8), isNull);
+    expect(c.selected!.dx, 0.3);
+    expect(c.selected!.dy, 0.8);
+    c.undo();
+    expect(c.selected, isNull);
+  });
+
+  test('size and rotation edits are undoable', () {
+    final c = EditorController(base());
+    c.select('title');
+    c.updateSelected((e) => e.copyWith(size: 60, rotation: 1));
+    expect(c.selected!.rotation, 1);
+    c.undo();
+    expect(c.selected!.rotation, 0);
+  });
 }

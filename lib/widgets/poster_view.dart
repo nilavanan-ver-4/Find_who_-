@@ -25,6 +25,10 @@ const double kElementMaxWidthFraction = 0.88;
 
 Size measureElement(PosterElement e, double posterWidth) {
   final scale = posterWidth / kPosterBaseWidth;
+  if (e.isPhoto) {
+    final w = e.size * scale;
+    return Size(w, w / e.aspect);
+  }
   final tp = TextPainter(
     text: TextSpan(text: e.text, style: posterTextStyle(e, scale)),
     textDirection: TextDirection.ltr,
@@ -35,9 +39,73 @@ Size measureElement(PosterElement e, double posterWidth) {
   return size;
 }
 
-/// Alignment that places an element's centre at (dx, dy) while keeping it
-/// fully inside the poster.
-Alignment elementAlignment(PosterElement e) => Alignment(e.dx * 2 - 1, e.dy * 2 - 1);
+/// Pixel-space centre of an element on a poster of the given size.
+Offset elementCenter(PosterElement e, Size poster) =>
+    Offset(e.dx * poster.width, e.dy * poster.height);
+
+/// Colour matrix for the photo brightness / saturation adjustments.
+List<double> photoColorMatrix(double brightness, double saturation) {
+  const lr = 0.2126, lg = 0.7152, lb = 0.0722;
+  final s = saturation;
+  final o = brightness * 255;
+  return [
+    lr * (1 - s) + s, lg * (1 - s), lb * (1 - s), 0, o,
+    lr * (1 - s), lg * (1 - s) + s, lb * (1 - s), 0, o,
+    lr * (1 - s), lg * (1 - s), lb * (1 - s) + s, 0, o,
+    0, 0, 0, 1, 0,
+  ];
+}
+
+/// A photo frame (shape, flip, colour adjustments) at an exact pixel size.
+class PosterPhoto extends StatelessWidget {
+  const PosterPhoto({super.key, required this.element, required this.size, this.cacheWidth = 1080});
+  final PosterElement element;
+  final Size size;
+  final int cacheWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    final e = element;
+    final radius = switch (e.shape) {
+      PhotoShape.square => 0.0,
+      PhotoShape.rounded => size.shortestSide * 0.12,
+      PhotoShape.circle => size.shortestSide,
+    };
+    Widget image = Image.file(
+      File(e.text),
+      fit: BoxFit.cover,
+      width: size.width,
+      height: size.height,
+      cacheWidth: cacheWidth,
+      errorBuilder: (_, _, _) => const ColoredBox(
+        color: Color(0x33000000),
+        child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white70)),
+      ),
+    );
+    if (e.brightness != 0 || e.saturation != 1) {
+      image = ColorFiltered(
+        colorFilter: ColorFilter.matrix(photoColorMatrix(e.brightness, e.saturation)),
+        child: image,
+      );
+    }
+    if (e.flipped) image = Transform.flip(flipX: true, child: image);
+    return SizedBox(
+      width: size.width,
+      height: size.height,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius),
+          border: Border.all(color: Colors.white, width: size.width * 0.012),
+          boxShadow: const [BoxShadow(color: Color(0x40000000), blurRadius: 10, offset: Offset(0, 4))],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(radius),
+          child: image,
+        ),
+      ),
+    );
+  }
+}
 
 /// Pure rendering of a poster. Used for thumbnails, the live editor preview
 /// and export so what you see is exactly what you get.
@@ -54,24 +122,37 @@ class PosterView extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, c) {
           final w = c.maxWidth;
+          final h = c.maxHeight;
           final scale = w / kPosterBaseWidth;
           return ClipRect(
             child: Stack(
               fit: StackFit.expand,
               children: [
                 CustomPaint(painter: PosterBackgroundPainter(doc.colors, doc.pattern)),
-                if (doc.photoPath != null) _Photo(path: doc.photoPath!, cacheWidth: photoCacheWidth),
                 if (doc.border != PosterBorder.none)
                   CustomPaint(painter: BorderPainter(doc.border, doc.borderColor, scale)),
                 for (final e in doc.elements)
-                  Align(
-                    alignment: elementAlignment(e),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: w * kElementMaxWidthFraction),
-                      child: Text(
-                        e.text,
-                        textAlign: TextAlign.center,
-                        style: posterTextStyle(e, scale),
+                  Positioned(
+                    left: e.dx * w,
+                    top: e.dy * h,
+                    child: FractionalTranslation(
+                      translation: const Offset(-0.5, -0.5),
+                      child: Transform.rotate(
+                        angle: e.rotation,
+                        child: e.isPhoto
+                            ? PosterPhoto(
+                                element: e,
+                                size: measureElement(e, w),
+                                cacheWidth: photoCacheWidth,
+                              )
+                            : ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: w * kElementMaxWidthFraction),
+                                child: Text(
+                                  e.text,
+                                  textAlign: TextAlign.center,
+                                  style: posterTextStyle(e, scale),
+                                ),
+                              ),
                       ),
                     ),
                   ),
@@ -80,44 +161,6 @@ class PosterView extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class _Photo extends StatelessWidget {
-  const _Photo({required this.path, required this.cacheWidth});
-  final String path;
-  final int cacheWidth;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: FractionallySizedBox(
-            alignment: Alignment.topCenter,
-            heightFactor: 0.55,
-            widthFactor: 0.8,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: Image.file(
-                  File(path),
-                  fit: BoxFit.cover,
-                  cacheWidth: cacheWidth,
-                  errorBuilder: (_, _, _) => const ColoredBox(
-                    color: Color(0x33000000),
-                    child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white70)),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -25,7 +25,9 @@ enum PosterLayout {
 
 enum PosterBorder { none, solid, dashed, double, rounded }
 
-enum ElementKind { text, sticker }
+enum ElementKind { text, sticker, photo }
+
+enum PhotoShape { rounded, circle, square }
 
 /// Width of the design grid that font sizes refer to.
 const double kPosterBaseWidth = 360;
@@ -41,21 +43,46 @@ class PosterElement {
     this.color = const Color(0xFFFFFFFF),
     this.font = 'sans-serif',
     this.bold = true,
+    this.rotation = 0,
+    this.aspect = 1,
+    this.shape = PhotoShape.rounded,
+    this.brightness = 0,
+    this.saturation = 1,
+    this.flipped = false,
   });
 
   final String id;
   final ElementKind kind;
+
+  /// Caption / emoji, or the file path for photos.
   final String text;
 
-  /// Center position as a fraction (0..1) of poster width / height.
+  /// Centre position as a fraction (0..1) of poster width / height.
   final double dx;
   final double dy;
 
-  /// Font size on the 360 pt design grid.
+  /// Font size on the 360 pt design grid (photos: width on that grid).
   final double size;
   final Color color;
   final String font;
   final bool bold;
+
+  /// Clockwise rotation in radians.
+  final double rotation;
+
+  // Photo-only settings.
+  /// width / height of the photo frame.
+  final double aspect;
+  final PhotoShape shape;
+
+  /// -0.5 .. 0.5, added to every colour channel.
+  final double brightness;
+
+  /// 0 = greyscale, 1 = original, 2 = vivid.
+  final double saturation;
+  final bool flipped;
+
+  bool get isPhoto => kind == ElementKind.photo;
 
   PosterElement copyWith({
     String? text,
@@ -65,6 +92,12 @@ class PosterElement {
     Color? color,
     String? font,
     bool? bold,
+    double? rotation,
+    double? aspect,
+    PhotoShape? shape,
+    double? brightness,
+    double? saturation,
+    bool? flipped,
   }) =>
       PosterElement(
         id: id,
@@ -76,6 +109,12 @@ class PosterElement {
         color: color ?? this.color,
         font: font ?? this.font,
         bold: bold ?? this.bold,
+        rotation: rotation ?? this.rotation,
+        aspect: aspect ?? this.aspect,
+        shape: shape ?? this.shape,
+        brightness: brightness ?? this.brightness,
+        saturation: saturation ?? this.saturation,
+        flipped: flipped ?? this.flipped,
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,6 +127,12 @@ class PosterElement {
         'color': color.toARGB32(),
         'font': font,
         'bold': bold,
+        'rotation': rotation,
+        'aspect': aspect,
+        'shape': shape.name,
+        'brightness': brightness,
+        'saturation': saturation,
+        'flipped': flipped,
       };
 
   factory PosterElement.fromJson(Map<String, dynamic> j) => PosterElement(
@@ -101,6 +146,25 @@ class PosterElement {
         color: Color((j['color'] as int?) ?? 0xFFFFFFFF),
         font: j['font'] as String? ?? 'sans-serif',
         bold: j['bold'] as bool? ?? true,
+        rotation: (j['rotation'] as num?)?.toDouble() ?? 0,
+        aspect: (j['aspect'] as num?)?.toDouble() ?? 1,
+        shape: PhotoShape.values.firstWhere((x) => x.name == j['shape'],
+            orElse: () => PhotoShape.rounded),
+        brightness: (j['brightness'] as num?)?.toDouble() ?? 0,
+        saturation: (j['saturation'] as num?)?.toDouble() ?? 1,
+        flipped: j['flipped'] as bool? ?? false,
+      );
+
+  /// A photo element placed behind the text.
+  factory PosterElement.photo(String path,
+          {double dx = 0.5, double dy = 0.33, double size = 190}) =>
+      PosterElement(
+        id: PosterDoc.newId(),
+        kind: ElementKind.photo,
+        text: path,
+        dx: dx,
+        dy: dy,
+        size: size,
       );
 }
 
@@ -112,7 +176,6 @@ class PosterDoc {
     this.layout = PosterLayout.portrait,
     this.colors = const [Color(0xFFFF6B9D), Color(0xFFC2185B)],
     this.pattern = PosterPattern.dots,
-    this.photoPath,
     this.border = PosterBorder.none,
     this.borderColor = const Color(0xFFFFFFFF),
     this.elements = const [],
@@ -122,7 +185,6 @@ class PosterDoc {
   final PosterLayout layout;
   final List<Color> colors;
   final PosterPattern pattern;
-  final String? photoPath;
   final PosterBorder border;
   final Color borderColor;
   final List<PosterElement> elements;
@@ -131,7 +193,6 @@ class PosterDoc {
     PosterLayout? layout,
     List<Color>? colors,
     PosterPattern? pattern,
-    Object? photoPath = _unset,
     PosterBorder? border,
     Color? borderColor,
     List<PosterElement>? elements,
@@ -141,9 +202,6 @@ class PosterDoc {
         layout: layout ?? this.layout,
         colors: colors ?? this.colors,
         pattern: pattern ?? this.pattern,
-        photoPath: identical(photoPath, _unset)
-            ? this.photoPath
-            : photoPath as String?,
         border: border ?? this.border,
         borderColor: borderColor ?? this.borderColor,
         elements: elements ?? this.elements,
@@ -168,13 +226,20 @@ class PosterDoc {
         'layout': layout.name,
         'colors': colors.map((c) => c.toARGB32()).toList(),
         'pattern': pattern.name,
-        'photoPath': photoPath,
         'border': border.name,
         'borderColor': borderColor.toARGB32(),
         'elements': elements.map((e) => e.toJson()).toList(),
       };
 
-  factory PosterDoc.fromJson(Map<String, dynamic> j) => PosterDoc(
+  factory PosterDoc.fromJson(Map<String, dynamic> j) {
+    final doc = PosterDoc._fromJson(j);
+    final legacy = j['photoPath'] as String?;
+    if (legacy == null) return doc;
+    // Posters saved before photos became movable elements.
+    return doc.copyWith(elements: [PosterElement.photo(legacy), ...doc.elements]);
+  }
+
+  factory PosterDoc._fromJson(Map<String, dynamic> j) => PosterDoc(
         templateId: j['templateId'] as String?,
         layout: PosterLayout.values.firstWhere((l) => l.name == j['layout'],
             orElse: () => PosterLayout.portrait),
@@ -182,7 +247,6 @@ class PosterDoc {
             .map((c) => Color(c as int))
             .toList(),
         pattern: patternFromName(j['pattern'] as String?),
-        photoPath: j['photoPath'] as String?,
         border: PosterBorder.values.firstWhere((b) => b.name == j['border'],
             orElse: () => PosterBorder.none),
         borderColor: Color((j['borderColor'] as int?) ?? 0xFFFFFFFF),
@@ -208,14 +272,14 @@ class PosterDoc {
       layout: layout,
       colors: t.colors,
       pattern: t.pattern,
-      photoPath: photoPath,
       elements: [
+        if (hasPhoto) PosterElement.photo(photoPath),
         PosterElement(
           id: 'emoji',
           kind: ElementKind.sticker,
           text: t.emoji,
-          dy: hasPhoto ? 0.14 : 0.27,
-          size: hasPhoto ? 56 : 96,
+          dy: hasPhoto ? 0.07 : 0.27,
+          size: hasPhoto ? 36 : 96,
         ),
         PosterElement(
           id: 'title',
@@ -244,4 +308,3 @@ class PosterDoc {
       '${DateTime.now().microsecondsSinceEpoch}${Random().nextInt(9999)}';
 }
 
-const Object _unset = Object();

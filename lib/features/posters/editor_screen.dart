@@ -21,7 +21,7 @@ import 'editor_controller.dart';
 
 export 'editor_controller.dart' show EditorArgs;
 
-enum _Tool { text, stickers, background, border, format }
+enum _Tool { text, stickers, photo, background, border, format }
 
 class EditorScreen extends ConsumerStatefulWidget {
   const EditorScreen({super.key, required this.args});
@@ -33,6 +33,7 @@ class EditorScreen extends ConsumerStatefulWidget {
 class _EditorScreenState extends ConsumerState<EditorScreen> {
   late final EditorController _c = EditorController(widget.args.doc);
   final _boundaryKey = GlobalKey();
+  final _posterKey = GlobalKey();
   final _textController = TextEditingController();
   _Tool _tool = _Tool.text;
   bool _busy = false;
@@ -227,24 +228,52 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
                   boxShadow: const [BoxShadow(color: Color(0x44000000), blurRadius: 16, offset: Offset(0, 6))],
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Stack(
-                  children: [
-                    RepaintBoundary(
-                      key: _boundaryKey,
-                      child: PosterView(doc: _c.doc, photoCacheWidth: 1080),
-                    ),
-                    Positioned.fill(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () => _c.select(null),
-                        child: _InteractionLayer(controller: _c, width: w, height: h),
+                child: DragTarget<String>(
+                  onAcceptWithDetails: (d) {
+                    final box = _posterKey.currentContext?.findRenderObject() as RenderBox?;
+                    if (box == null) return;
+                    final local = box.globalToLocal(d.offset);
+                    final err = _c.addStickerAt(
+                      d.data,
+                      (local.dx / w).clamp(0.05, 0.95),
+                      (local.dy / h).clamp(0.05, 0.95),
+                    );
+                    if (err != null) showSnack(context, err);
+                  },
+                  builder: (context, candidates, _) => Stack(
+                    key: _posterKey,
+                    children: [
+                      RepaintBoundary(
+                        key: _boundaryKey,
+                        child: PosterView(doc: _c.doc, photoCacheWidth: 1080),
                       ),
-                    ),
-                    if (_busy)
-                      const Positioned.fill(
-                        child: ColoredBox(color: Color(0x88000000), child: LoadingState()),
+                      Positioned.fill(
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () => _c.select(null),
+                          child: _InteractionLayer(controller: _c, width: w, height: h),
+                        ),
                       ),
-                  ],
+                      if (candidates.isNotEmpty)
+                        Positioned.fill(
+                          child: IgnorePointer(
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white, width: 3),
+                                color: Colors.white24,
+                              ),
+                              child: const Center(
+                                child: Text('Drop it here', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 18)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      if (_busy)
+                        const Positioned.fill(
+                          child: ColoredBox(color: Color(0x88000000), child: LoadingState()),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -258,6 +287,7 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
     const labels = {
       _Tool.text: (Icons.text_fields, 'Text'),
       _Tool.stickers: (Icons.emoji_emotions_outlined, 'Stickers'),
+      _Tool.photo: (Icons.photo_outlined, 'Photo'),
       _Tool.background: (Icons.palette_outlined, 'Background'),
       _Tool.border: (Icons.border_style, 'Border'),
       _Tool.format: (Icons.aspect_ratio, 'Format'),
@@ -286,12 +316,15 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(labels[t]!.$1, size: 20, color: _tool == t ? AppColors.purple : null),
-                        Text(labels[t]!.$2,
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                color: _tool == t ? AppColors.purple : null)),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(labels[t]!.$2,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: _tool == t ? AppColors.purple : null)),
+                        ),
                       ],
                     ),
                   ),
@@ -306,6 +339,7 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
   Widget _panel(AppContent content) => switch (_tool) {
         _Tool.text => _textPanel(content),
         _Tool.stickers => _stickerPanel(content),
+        _Tool.photo => _photoPanel(),
         _Tool.background => _backgroundPanel(content),
         _Tool.border => _borderPanel(content),
         _Tool.format => _formatPanel(),
@@ -362,7 +396,11 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
                     selected: _c.selectedId == el.id,
                     showCheckmark: false,
                     label: Text(
-                      el.text.length > 12 ? '${el.text.substring(0, 12)}…' : el.text,
+                      el.isPhoto
+                          ? '📷 Photo'
+                          : el.text.length > 12
+                              ? '${el.text.substring(0, 12)}…'
+                              : el.text,
                     ),
                     onSelected: (_) => _c.select(el.id),
                   ),
@@ -374,7 +412,7 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
         if (e == null)
           const Padding(
             padding: EdgeInsets.all(Spacing.md),
-            child: Text('Tap anything on the poster to edit it, drag to move it.'),
+            child: Text('Tap anything on the poster to select it. Drag to move, pinch or use the corner handle to resize and rotate.'),
           )
         else ...[
           if (e.kind == ElementKind.text)
@@ -438,6 +476,7 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
             ),
             const SizedBox(height: 8),
             _swatches(content.palette, e.color, (col) => _c.updateSelected((x) => x.copyWith(color: col))),
+            _rotationRow(e),
           ],
         ],
         const SizedBox(height: 8),
@@ -464,21 +503,37 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
     return ListView(
       padding: const EdgeInsets.all(Spacing.md),
       children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: 6),
+          child: Text('Tap to add, or hold and drag onto the poster.'),
+        ),
         Wrap(
           spacing: 4,
           runSpacing: 4,
           children: [
             for (final s in content.stickers)
-              InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: () {
-                  final err = _c.addSticker(s);
-                  if (err != null) showSnack(context, err);
-                },
-                child: SizedBox(
-                  width: 48,
-                  height: 48,
-                  child: Center(child: Text(s, style: const TextStyle(fontSize: 28))),
+              LongPressDraggable<String>(
+                data: s,
+                dragAnchorStrategy: pointerDragAnchorStrategy,
+                feedback: Material(
+                  color: Colors.transparent,
+                  child: Text(s, style: const TextStyle(fontSize: 56)),
+                ),
+                childWhenDragging: Opacity(
+                  opacity: 0.3,
+                  child: SizedBox(width: 48, height: 48, child: Center(child: Text(s, style: const TextStyle(fontSize: 28)))),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: () {
+                    final err = _c.addSticker(s);
+                    if (err != null) showSnack(context, err);
+                  },
+                  child: SizedBox(
+                    width: 48,
+                    height: 48,
+                    child: Center(child: Text(s, style: const TextStyle(fontSize: 28))),
+                  ),
                 ),
               ),
           ],
@@ -499,6 +554,170 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
               IconButton(onPressed: _c.deleteSelected, tooltip: 'Delete', icon: const Icon(Icons.delete_outline)),
             ],
           ),
+        if (e != null && e.kind == ElementKind.sticker) _rotationRow(e),
+      ],
+    );
+  }
+
+  Widget _rotationRow(PosterElement e) {
+    final deg = (e.rotation * 180 / pi).clamp(-180.0, 180.0).toDouble();
+    return Row(
+      children: [
+        const Icon(Icons.rotate_right),
+        Expanded(
+          child: Slider(
+            min: -180,
+            max: 180,
+            value: deg,
+            label: '${deg.round()}°',
+            onChangeStart: (_) => _c.checkpoint(),
+            onChanged: (v) => _c.liveUpdateSelected((x) => x.copyWith(rotation: v * pi / 180)),
+          ),
+        ),
+        IconButton(
+          tooltip: 'Straighten',
+          onPressed: e.rotation == 0 ? null : () => _c.updateSelected((x) => x.copyWith(rotation: 0)),
+          icon: const Icon(Icons.straighten),
+        ),
+      ],
+    );
+  }
+
+  Widget _photoPanel() {
+    final e = _c.selected;
+    final photo = e != null && e.isPhoto ? e : null;
+    Future<void> pick({required bool replace}) async {
+      final path = await pickPhoto(context, ref);
+      if (path == null || !mounted) return;
+      if (replace) {
+        _c.replacePhoto(path);
+      } else {
+        final err = _c.addPhoto(path);
+        if (err != null) showSnack(context, err);
+      }
+    }
+
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: Spacing.md),
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: OutlinedButton.icon(
+                onPressed: () => pick(replace: false),
+                icon: const Icon(Icons.add_photo_alternate_outlined),
+                label: const Text('Add photo'),
+              ),
+            ),
+            if (photo != null) ...[
+              const SizedBox(width: 8),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => pick(replace: true),
+                  icon: const Icon(Icons.swap_horiz),
+                  label: const Text('Replace'),
+                ),
+              ),
+              IconButton(tooltip: 'Delete photo', onPressed: _c.deleteSelected, icon: const Icon(Icons.delete_outline)),
+            ],
+          ],
+        ),
+        if (photo == null)
+          const Padding(
+            padding: EdgeInsets.all(Spacing.md),
+            child: Text('Add a photo, then tap it on the poster to move, resize, rotate, reshape and colour-adjust it.'),
+          )
+        else ...[
+          SizedBox(
+            height: 44,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                for (final sh in PhotoShape.values)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: ChoiceChip(
+                      selected: photo.shape == sh,
+                      showCheckmark: false,
+                      label: Text(sh.name[0].toUpperCase() + sh.name.substring(1)),
+                      onSelected: (_) => _c.updateSelected((x) => x.copyWith(shape: sh)),
+                    ),
+                  ),
+                for (final a in const [(1.0, 'Square'), (4 / 5, 'Tall'), (4 / 3, 'Wide')])
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: ChoiceChip(
+                      selected: (photo.aspect - a.$1).abs() < 0.01,
+                      showCheckmark: false,
+                      label: Text('Crop: ${a.$2}'),
+                      onSelected: (_) => _c.updateSelected((x) => x.copyWith(aspect: a.$1)),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              const Icon(Icons.zoom_out_map),
+              Expanded(
+                child: Slider(
+                  min: 60,
+                  max: 340,
+                  value: photo.size.clamp(60, 340).toDouble(),
+                  onChangeStart: (_) => _c.checkpoint(),
+                  onChanged: (v) => _c.liveUpdateSelected((x) => x.copyWith(size: v)),
+                ),
+              ),
+            ],
+          ),
+          _rotationRow(photo),
+          Row(
+            children: [
+              const Icon(Icons.brightness_6_outlined),
+              Expanded(
+                child: Slider(
+                  min: -0.4,
+                  max: 0.4,
+                  value: photo.brightness.clamp(-0.4, 0.4).toDouble(),
+                  onChangeStart: (_) => _c.checkpoint(),
+                  onChanged: (v) => _c.liveUpdateSelected((x) => x.copyWith(brightness: v)),
+                ),
+              ),
+              const Icon(Icons.color_lens_outlined),
+              Expanded(
+                child: Slider(
+                  min: 0,
+                  max: 2,
+                  value: photo.saturation.clamp(0, 2).toDouble(),
+                  onChangeStart: (_) => _c.checkpoint(),
+                  onChanged: (v) => _c.liveUpdateSelected((x) => x.copyWith(saturation: v)),
+                ),
+              ),
+            ],
+          ),
+          Wrap(
+            spacing: 8,
+            children: [
+              ActionChip(
+                avatar: const Icon(Icons.flip, size: 18),
+                label: const Text('Flip'),
+                onPressed: () => _c.updateSelected((x) => x.copyWith(flipped: !x.flipped)),
+              ),
+              ActionChip(
+                avatar: const Icon(Icons.rotate_90_degrees_cw, size: 18),
+                label: const Text('Rotate 90°'),
+                onPressed: () => _c.updateSelected((x) => x.copyWith(rotation: x.rotation + pi / 2)),
+              ),
+              ActionChip(
+                avatar: const Icon(Icons.restart_alt, size: 18),
+                label: const Text('Reset look'),
+                onPressed: () => _c.updateSelected(
+                    (x) => x.copyWith(brightness: 0, saturation: 1, flipped: false, rotation: 0)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
       ],
     );
   }
@@ -547,25 +766,6 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
                 label: Text(p.name[0].toUpperCase() + p.name.substring(1)),
                 onSelected: (_) => _c.setPattern(p),
               ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () async {
-                  final path = await pickPhoto(context, ref);
-                  if (path != null) _c.setPhoto(path);
-                },
-                icon: const Icon(Icons.add_photo_alternate_outlined),
-                label: Text(_c.doc.photoPath == null ? 'Add photo' : 'Change photo'),
-              ),
-            ),
-            if (_c.doc.photoPath != null) ...[
-              const SizedBox(width: 8),
-              OutlinedButton(onPressed: () => _c.setPhoto(null), child: const Text('Remove')),
-            ],
           ],
         ),
       ],
@@ -668,57 +868,187 @@ class _ActionButton extends StatelessWidget {
   }
 }
 
-/// Transparent layer above the poster with one draggable hit box per element.
-/// Lives outside the RepaintBoundary so selection outlines never get exported.
-class _InteractionLayer extends StatelessWidget {
+/// Transparent layer above the poster with one gesture box per element.
+/// Lives outside the RepaintBoundary so selection outlines and handles never
+/// get exported.
+///
+/// * drag with one finger to move (the element stays inside the poster)
+/// * pinch with two fingers to resize and rotate
+/// * drag the corner handle to resize and rotate with one finger
+/// * tap the red button to delete
+class _InteractionLayer extends StatefulWidget {
   const _InteractionLayer({required this.controller, required this.width, required this.height});
   final EditorController controller;
   final double width;
   final double height;
 
   @override
+  State<_InteractionLayer> createState() => _InteractionLayerState();
+}
+
+class _InteractionLayerState extends State<_InteractionLayer> {
+  static const _pad = 20.0; // extra grab area around each element
+
+  double _startSize = 0;
+  double _startRotation = 0;
+  double _startDistance = 1;
+  double _startAngle = 0;
+
+  EditorController get c => widget.controller;
+  Size get _poster => Size(widget.width, widget.height);
+
+  (double, double) _limits(PosterElement e) => switch (e.kind) {
+        ElementKind.photo => (60, 340),
+        ElementKind.sticker => (20, 260),
+        ElementKind.text => (12, 120),
+      };
+
+  @override
   Widget build(BuildContext context) {
-    final doc = controller.doc;
     return Stack(
+      clipBehavior: Clip.hardEdge,
+      // The selected element goes last so its handles are never covered by
+      // the (padded) grab area of a neighbouring element.
       children: [
-        for (final e in doc.elements)
-          Align(
-            alignment: elementAlignment(e),
-            child: _hitBox(e),
-          ),
+        for (final e in c.doc.elements)
+          if (e.id != c.selectedId) _box(e),
+        for (final e in c.doc.elements)
+          if (e.id == c.selectedId) _box(e),
       ],
     );
   }
 
-  Widget _hitBox(PosterElement e) {
-    final size = measureElement(e, width);
-    final selected = controller.selectedId == e.id;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => controller.select(e.id),
-      onPanStart: (_) {
-        controller.select(e.id);
-        controller.checkpoint();
-      },
-      onPanUpdate: (d) {
-        final freeW = max(width - size.width, 1.0);
-        final freeH = max(height - size.height, 1.0);
-        controller.moveBy(e.id, d.delta.dx / freeW, d.delta.dy / freeH);
-      },
-      child: Container(
-        width: size.width,
-        height: size.height,
-        foregroundDecoration: selected
-            ? BoxDecoration(
-                border: Border.all(color: Colors.white, width: 1.5),
-              )
-            : null,
-        decoration: selected
-            ? BoxDecoration(
-                border: Border.all(color: Colors.black54, width: 3),
-              )
-            : null,
+  Widget _box(PosterElement e) {
+    final size = measureElement(e, widget.width);
+    final selected = c.selectedId == e.id;
+    final center = elementCenter(e, _poster);
+    final w = size.width + _pad * 2;
+    final h = size.height + _pad * 2;
+    return Positioned(
+      left: center.dx - w / 2,
+      top: center.dy - h / 2,
+      width: w,
+      height: h,
+      child: Transform.rotate(
+        angle: e.rotation,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => c.select(e.id),
+                onScaleStart: (_) {
+                  c.select(e.id);
+                  c.checkpoint();
+                  _startSize = e.size;
+                  _startRotation = e.rotation;
+                },
+                onScaleUpdate: (d) => _onScale(e, d, size),
+                child: Padding(
+                  padding: const EdgeInsets.all(_pad),
+                  child: DecoratedBox(
+                    decoration: selected
+                        ? BoxDecoration(border: Border.all(color: Colors.black54, width: 3))
+                        : const BoxDecoration(),
+                    position: DecorationPosition.background,
+                    child: DecoratedBox(
+                      decoration: selected
+                          ? BoxDecoration(border: Border.all(color: Colors.white, width: 1.5))
+                          : const BoxDecoration(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            if (selected) ...[
+              Positioned(right: 0, bottom: 0, child: _resizeHandle(e)),
+              Positioned(left: 0, top: 0, child: _deleteHandle()),
+            ],
+          ],
+        ),
       ),
     );
+  }
+
+  void _onScale(PosterElement e, ScaleUpdateDetails d, Size size) {
+    final (minSize, maxSize) = _limits(e);
+    final pinching = d.pointerCount > 1;
+    final newSize = pinching ? (_startSize * d.scale).clamp(minSize, maxSize).toDouble() : e.size;
+    final newRotation = pinching ? _startRotation + d.rotation : e.rotation;
+    final grown = e.copyWith(size: newSize, rotation: newRotation);
+    final grownSize = measureElement(grown, widget.width);
+    final cur = elementCenter(e, _poster);
+    final next = cur + d.focalPointDelta;
+    c.liveUpdateSelected((x) => x.copyWith(size: newSize, rotation: newRotation));
+    c.moveTo(
+      e.id,
+      next.dx / widget.width,
+      next.dy / widget.height,
+      halfW: grownSize.width / 2 / widget.width,
+      halfH: grownSize.height / 2 / widget.height,
+    );
+  }
+
+  Widget _resizeHandle(PosterElement e) {
+    return Builder(
+      builder: (_) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onPanStart: (d) {
+          c.checkpoint();
+          final v = _vectorFromCenter(e, d.globalPosition);
+          _startSize = e.size;
+          _startRotation = e.rotation;
+          _startDistance = max(v.distance, 1);
+          _startAngle = v.direction;
+        },
+        onPanUpdate: (d) {
+          final v = _vectorFromCenter(e, d.globalPosition);
+          final (minSize, maxSize) = _limits(e);
+          c.liveUpdateSelected((x) => x.copyWith(
+                size: (_startSize * v.distance / _startDistance).clamp(minSize, maxSize).toDouble(),
+                rotation: _startRotation + (v.direction - _startAngle),
+              ));
+        },
+        child: Semantics(
+          label: 'Resize and rotate',
+          child: Container(
+            width: _pad * 1.6,
+            height: _pad * 1.6,
+            margin: const EdgeInsets.all(_pad * 0.2),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.purple, width: 2),
+            ),
+            child: const Icon(Icons.open_in_full, size: 14, color: AppColors.purple),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _deleteHandle() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: c.deleteSelected,
+      child: Semantics(
+        button: true,
+        label: 'Delete element',
+        child: Container(
+          width: _pad * 1.6,
+          height: _pad * 1.6,
+          margin: const EdgeInsets.all(_pad * 0.2),
+          decoration: const BoxDecoration(color: Color(0xFFE53935), shape: BoxShape.circle),
+          child: const Icon(Icons.close, size: 16, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  /// Vector from the centre of an element to a pointer position (global).
+  Offset _vectorFromCenter(PosterElement e, Offset global) {
+    final layer = context.findRenderObject();
+    if (layer is! RenderBox || !layer.hasSize) return const Offset(1, 0);
+    return global - layer.localToGlobal(elementCenter(e, _poster));
   }
 }

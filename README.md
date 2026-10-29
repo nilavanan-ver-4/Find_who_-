@@ -4,7 +4,7 @@ A fun, offline-first Flutter app for friends: browse and personalise funny poste
 resolution, and play 16 party games on one phone. No sign-in, no ads, no analytics, no network needed.
 
 * **Posters** – 96 ready-made templates in 19 categories, searchable, favourites, a live editor
-  (movable text, fonts, sizes, colours, stickers, borders, backgrounds, patterns, optional photo, undo/reset),
+  (drag to move, pinch or corner handle to resize and rotate, red button to delete; photos with shape, crop, flip, brightness and saturation; stickers you can tap or drag-and-drop onto the poster; fonts, colours, borders, backgrounds, patterns, undo/reset),
   square / portrait / story formats, export at 1080 px wide with no watermark.
 * **Games** – Truth or Dare (3 levels, categories, skip), Would You Rather, Most Likely To (+ Reply Late Champion,
   Drama King/Queen, Always Hungry, Most Dramatic Friend), Never Have I Ever, Spin the Wheel (custom options),
@@ -44,7 +44,7 @@ flutter run                      # on a connected Android device / emulator
 
 ```bash
 flutter analyze
-flutter test                     # 56 unit + widget tests
+flutter test                     # 68 unit + widget tests
 ```
 
 ## Android build

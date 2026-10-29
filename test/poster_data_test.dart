@@ -74,19 +74,32 @@ void main() {
       expect(doc.templateId, template.id);
     });
 
-    test('JSON round trip preserves everything', () {
-      final doc = PosterDoc.fromTemplate(template, inputs: const PosterInputs(nameA: 'Ann'), layout: PosterLayout.story)
-          .copyWith(border: PosterBorder.dashed, borderColor: const Color(0xFF123456), photoPath: '/p.jpg');
+    test('JSON round trip preserves everything, including photo settings', () {
+      var doc = PosterDoc.fromTemplate(template,
+              inputs: const PosterInputs(nameA: 'Ann'), layout: PosterLayout.story, photoPath: '/p.jpg')
+          .copyWith(border: PosterBorder.dashed, borderColor: const Color(0xFF123456));
+      final photo = doc.elements.firstWhere((e) => e.isPhoto).copyWith(
+            rotation: 0.5, shape: PhotoShape.circle, aspect: 0.8, brightness: 0.2, saturation: 1.5, flipped: true);
+      doc = doc.updateElement(photo);
       final back = PosterDoc.fromJson(doc.toJson());
       expect(back.toJson(), doc.toJson());
       expect(back.layout, PosterLayout.story);
-      expect(back.photoPath, '/p.jpg');
+      final p = back.elements.firstWhere((e) => e.isPhoto);
+      expect(p.text, '/p.jpg');
+      expect(p.shape, PhotoShape.circle);
+      expect(p.flipped, isTrue);
+      expect(p.rotation, 0.5);
     });
 
-    test('copyWith can clear the photo', () {
-      final doc = const PosterDoc().copyWith(photoPath: '/a.jpg');
-      expect(doc.copyWith(photoPath: null).photoPath, isNull);
-      expect(doc.copyWith().photoPath, '/a.jpg');
+    test('a photo from a template sits behind the text', () {
+      final doc = PosterDoc.fromTemplate(template, photoPath: '/p.jpg');
+      expect(doc.elements.first.isPhoto, isTrue);
+    });
+
+    test('posters saved with the old photoPath field still show their photo', () {
+      final doc = PosterDoc.fromJson({'layout': 'square', 'photoPath': '/old.jpg', 'elements': []});
+      expect(doc.elements.single.isPhoto, isTrue);
+      expect(doc.elements.single.text, '/old.jpg');
     });
 
     test('element positions are clamped to the poster', () {

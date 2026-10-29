@@ -156,9 +156,42 @@ class EditorController extends ChangeNotifier {
     _set(_doc.copyWith(pattern: pattern));
   }
 
-  void setPhoto(String? path) {
+  /// Adds a photo behind everything else and selects it.
+  String? addPhoto(String path) {
+    if (_doc.elements.length >= maxElements) return 'That is a lot of stuff! Remove something first.';
     checkpoint();
-    _set(_doc.copyWith(photoPath: path));
+    final e = PosterElement.photo(path);
+    _doc = _doc.copyWith(elements: [e, ..._doc.elements]);
+    _selectedId = e.id;
+    notifyListeners();
+    return null;
+  }
+
+  /// Swaps the image of the selected photo, keeping its frame and settings.
+  void replacePhoto(String path) {
+    final e = selected;
+    if (e == null || !e.isPhoto) return;
+    updateSelected((x) => x.copyWith(text: path));
+  }
+
+  /// Places a new sticker at an exact spot (drag and drop).
+  String? addStickerAt(String emoji, double dx, double dy) {
+    final err = addSticker(emoji);
+    if (err != null) return err;
+    final id = _selectedId!;
+    _doc = _doc.updateElement(_doc.elementById(id)!.copyWith(dx: dx, dy: dy));
+    notifyListeners();
+    return null;
+  }
+
+  /// Moves the element's centre to (dx, dy), keeping its box inside the poster
+  /// ([halfW] / [halfH] are half its size as fractions of the poster).
+  void moveTo(String id, double dx, double dy, {double halfW = 0, double halfH = 0}) {
+    final e = _doc.elementById(id);
+    if (e == null) return;
+    double clampAxis(double v, double half) =>
+        half >= 0.5 ? 0.5 : v.clamp(half, 1 - half).toDouble();
+    _set(_doc.updateElement(e.copyWith(dx: clampAxis(dx, halfW), dy: clampAxis(dy, halfH))));
   }
 
   void setBorder(PosterBorder b) {
