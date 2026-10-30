@@ -9,12 +9,29 @@ void main() {
   final content = loadTestContent();
 
   group('bundled content', () {
-    test('has all 19 required categories with several templates each', () {
-      expect(content.categories.length, 19);
-      for (final c in content.categories) {
+    test('has all 19 requested categories plus Tamil Memes, each with several templates', () {
+      expect(content.topCategories.length, 20);
+      for (final c in content.categories.where((c) => c.parent == null && c.id != 'tamil_memes')) {
         final n = content.templates.where((t) => t.category == c.id).length;
         expect(n, greaterThanOrEqualTo(4), reason: c.name);
       }
+    });
+
+    test('Tamil Memes has an actor sub-category per actor, each with templates', () {
+      final actors = content.childrenOf('tamil_memes');
+      expect(actors.length, greaterThanOrEqualTo(12));
+      final names = actors.map((c) => c.name).toSet();
+      for (final n in ['Vadivelu', 'Goundamani', 'Santhanam', 'Yogi Babu', 'Vivek', 'Soori', 'Rajinikanth',
+        'Kamal Haasan', 'Vijay', 'Ajith Kumar', 'Suriya', 'Dhanush', 'Vijay Sethupathi']) {
+        expect(names, contains(n));
+      }
+      for (final a in actors) {
+        final n = content.templates.where((t) => t.category == a.id).length;
+        expect(n, greaterThanOrEqualTo(5), reason: a.name);
+        expect(content.inCategory(a.id, 'tamil_memes'), isTrue);
+      }
+      expect(content.templates.where((t) => content.inCategory(t.category, 'tamil_memes')).length, 70);
+      expect(content.inCategory('birthday', 'tamil_memes'), isFalse);
     });
 
     test('template ids are unique and categories exist', () {

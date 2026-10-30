@@ -19,6 +19,7 @@ class PosterCategory {
     required this.name,
     required this.emoji,
     required this.color,
+    this.parent,
   });
 
   final String id;
@@ -26,11 +27,15 @@ class PosterCategory {
   final String emoji;
   final Color color;
 
+  /// Id of the parent category (for example an actor inside Tamil Memes).
+  final String? parent;
+
   factory PosterCategory.fromJson(Map<String, dynamic> j) => PosterCategory(
         id: j['id'] as String,
         name: j['name'] as String,
         emoji: j['emoji'] as String,
         color: colorFromHex(j['color'] as String),
+        parent: j['parent'] as String?,
       );
 }
 

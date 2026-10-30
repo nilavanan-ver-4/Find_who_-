@@ -3,7 +3,7 @@
 A fun, offline-first Flutter app for friends: browse and personalise funny posters, export them in high
 resolution, and play 16 party games on one phone. No sign-in, no ads, no analytics, no network needed.
 
-* **Posters** – 96 ready-made templates in 19 categories, searchable, favourites, a live editor
+* **Posters** – 166 ready-made templates: 19 categories plus Tamil Memes with a sub-category for each actor, searchable, favourites, a live editor
   (drag to move, pinch or corner handle to resize and rotate, red button to delete; photos with shape, crop, flip, brightness and saturation; stickers you can tap or drag-and-drop onto the poster; fonts, colours, borders, backgrounds, patterns, undo/reset),
   square / portrait / story formats, export at 1080 px wide with no watermark.
 * **Games** – Truth or Dare (3 levels, categories, skip), Would You Rather, Most Likely To (+ Reply Late Champion,
@@ -44,7 +44,7 @@ flutter run                      # on a connected Android device / emulator
 
 ```bash
 flutter analyze
-flutter test                     # 68 unit + widget tests
+flutter test                     # 70 unit + widget tests
 ```
 
 ## Android build
@@ -78,7 +78,7 @@ All content lives in `assets/data/*.json`.
 `font` is any id from `editor_assets.json` (`sans-serif`, `serif`, `cursive`, `sans-serif-condensed`, `monospace`).
 IDs must be unique and `category` must exist.
 
-**New category** – add `{ "id", "name", "emoji", "color" }` to `categories` in `posters.json`.
+**New category** – add `{ "id", "name", "emoji", "color" }` to `categories` in `posters.json`. Add `"parent": "<category id>"` to make it a sub-category (like the actors under `tamil_memes`); templates then use the sub-category id.
 
 **New game questions** – append to the matching file:
 `truth_dare.json` (`type` truth|dare, `level` easy|medium|spicy, `category`), `would_you_rather.json`,

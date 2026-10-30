@@ -122,6 +122,17 @@ class AppContent {
     return null;
   }
 
+  /// Categories shown as the main chips.
+  List<PosterCategory> get topCategories =>
+      categories.where((c) => c.parent == null).toList();
+
+  List<PosterCategory> childrenOf(String id) =>
+      categories.where((c) => c.parent == id).toList();
+
+  /// True when [category] is [id] itself or one of its sub-categories.
+  bool inCategory(String category, String id) =>
+      category == id || categoryById(category)?.parent == id;
+
   MostLikelyDeck deck(String id) =>
       mostLikely.firstWhere((d) => d.id == id, orElse: () => mostLikely.first);
 

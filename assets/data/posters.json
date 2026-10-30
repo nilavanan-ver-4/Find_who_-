@@ -1,6 +1,12 @@
 {
  "categories": [
   {
+   "id": "tamil_memes",
+   "name": "Tamil Memes",
+   "emoji": "🎬",
+   "color": "#E91E63"
+  },
+  {
    "id": "best_friends",
    "name": "Best Friends",
    "emoji": "🤝",
@@ -113,6 +119,104 @@
    "name": "Custom Meme Posters",
    "emoji": "🤪",
    "color": "#6D4C41"
+  },
+  {
+   "id": "tm_general",
+   "name": "Machi Memes",
+   "emoji": "😎",
+   "color": "#FF7043",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_vadivelu",
+   "name": "Vadivelu",
+   "emoji": "🤣",
+   "color": "#7C4DFF",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_goundamani",
+   "name": "Goundamani",
+   "emoji": "😏",
+   "color": "#FF9F1C",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_santhanam",
+   "name": "Santhanam",
+   "emoji": "😆",
+   "color": "#26A69A",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_yogibabu",
+   "name": "Yogi Babu",
+   "emoji": "😐",
+   "color": "#455A64",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_vivek",
+   "name": "Vivek",
+   "emoji": "🌳",
+   "color": "#43A047",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_soori",
+   "name": "Soori",
+   "emoji": "🥞",
+   "color": "#FFB300",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_rajini",
+   "name": "Rajinikanth",
+   "emoji": "🕶️",
+   "color": "#212121",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_kamal",
+   "name": "Kamal Haasan",
+   "emoji": "🎭",
+   "color": "#6D4C41",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_vijay",
+   "name": "Vijay",
+   "emoji": "🕺",
+   "color": "#1E88E5",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_ajith",
+   "name": "Ajith Kumar",
+   "emoji": "🏍️",
+   "color": "#455A64",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_suriya",
+   "name": "Suriya",
+   "emoji": "🦁",
+   "color": "#D84315",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_dhanush",
+   "name": "Dhanush",
+   "emoji": "🎸",
+   "color": "#00ACC1",
+   "parent": "tamil_memes"
+  },
+  {
+   "id": "tm_vijaysethupathi",
+   "name": "Vijay Sethupathi",
+   "emoji": "🧔",
+   "color": "#8D6E63",
+   "parent": "tamil_memes"
   }
  ],
  "templates": [
@@ -1554,6 +1658,1056 @@
    "pattern": "rays",
    "textColor": "#FFFFFF",
    "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_general_1",
+   "category": "tm_general",
+   "title": "Semma Mokka da!",
+   "caption": "{a} ippo pesina joke: 100% mokka, 0% sirippu",
+   "emoji": "🤦",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_general_2",
+   "category": "tm_general",
+   "title": "Machi, Scene Podatha",
+   "caption": "{a} nanbarkitta: 'Naan romba busy'. Netflix la 3rd season mudichittu",
+   "emoji": "📺",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_general_3",
+   "category": "tm_general",
+   "title": "Enna Koduma Sir Idhu",
+   "caption": "{a} whatsapp la 'Seen' pannitu reply panna maraandhutaan",
+   "emoji": "📱",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_general_4",
+   "category": "tm_general",
+   "title": "Bro Mood Off",
+   "caption": "{a}: Biryani la leg piece kedaikala. Life is meaningless.",
+   "emoji": "🍗",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_general_5",
+   "category": "tm_general",
+   "title": "Sema Vibe",
+   "caption": "{a} + {b} + chai + mazhai = perfect evening",
+   "emoji": "☔",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vadivelu_1",
+   "category": "tm_vadivelu",
+   "title": "Vadivelu Mode: ON",
+   "caption": "{a}: 'Naan paathukuren'... exam hall la blank paper",
+   "emoji": "📝",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": true
+  },
+  {
+   "id": "tm_vadivelu_2",
+   "category": "tm_vadivelu",
+   "title": "Aiyyo Aiyyo!",
+   "caption": "{a} current bill-a paarthuttu full drama",
+   "emoji": "⚡",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vadivelu_3",
+   "category": "tm_vadivelu",
+   "title": "Build-up Level 100",
+   "caption": "{a}: 'Enakku ellame theriyum'. Phone la 2+2 Google panraan.",
+   "emoji": "🧠",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vadivelu_4",
+   "category": "tm_vadivelu",
+   "title": "Naan Escape!",
+   "caption": "Amma 'inga vaa, pesanum' sonnadhum {a} odiduvaan",
+   "emoji": "🏃",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vadivelu_5",
+   "category": "tm_vadivelu",
+   "title": "Over Acting Award",
+   "caption": "Biryani mudinjuduchu. {a} nadippu Oscar level.",
+   "emoji": "🏆",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_goundamani_1",
+   "category": "tm_goundamani",
+   "title": "Sarcasm Level: Goundamani",
+   "caption": "{a}: 'Naan seiven'. Ellarum: 'Seiyalaiye da...'",
+   "emoji": "🙄",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_goundamani_2",
+   "category": "tm_goundamani",
+   "title": "Kaalam Kettu Pochu",
+   "caption": "{a} diet start pannaan. Naalai moththam mudhal naal.",
+   "emoji": "🥗",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_goundamani_3",
+   "category": "tm_goundamani",
+   "title": "Idhellam Oru Pozhappa?",
+   "caption": "{a} 5 star hotel la paani puri sapdraan",
+   "emoji": "🍽️",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_goundamani_4",
+   "category": "tm_goundamani",
+   "title": "Counter Time",
+   "caption": "{a}: 'Naan romba honest'. Account la paathaa theriyum.",
+   "emoji": "💸",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_goundamani_5",
+   "category": "tm_goundamani",
+   "title": "Senthil Enga?",
+   "caption": "{a} + {b}: oru jodi, oru kudumbam, oru kuzhappam",
+   "emoji": "👬",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_santhanam_1",
+   "category": "tm_santhanam",
+   "title": "Counter King",
+   "caption": "{a}: oru line. {b}: silence. Round over.",
+   "emoji": "👑",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_santhanam_2",
+   "category": "tm_santhanam",
+   "title": "Body Shaming Illa Da",
+   "caption": "{a} mirror paathu: 'Nalla thaan irukken'",
+   "emoji": "🪞",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_santhanam_3",
+   "category": "tm_santhanam",
+   "title": "Nanbenda!",
+   "caption": "{a} thanni adichittu 'Nee dhaan en best friend' mode",
+   "emoji": "🍻",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_santhanam_4",
+   "category": "tm_santhanam",
+   "title": "Oru Vaarthai Podhum",
+   "caption": "{a} oru comment-la ellaraiyum kalaaichittaan",
+   "emoji": "🎤",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_santhanam_5",
+   "category": "tm_santhanam",
+   "title": "Plan Phailure",
+   "caption": "{a}: 'Easy plan'. Aduthadhu... full chaos.",
+   "emoji": "📉",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_yogibabu_1",
+   "category": "tm_yogibabu",
+   "title": "Straight Face Level",
+   "caption": "{a}: serious-a oru joke solraan. Yaarum sirikkala.",
+   "emoji": "😐",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "tm_yogibabu_2",
+   "category": "tm_yogibabu",
+   "title": "Dei, Enna Da Idhu",
+   "caption": "{a} 'Dei' nu sonnaale oru pattalam sirikkum",
+   "emoji": "🤣",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_yogibabu_3",
+   "category": "tm_yogibabu",
+   "title": "Silent Attack",
+   "caption": "{a} onnum pesala. Aana kalaachaan.",
+   "emoji": "🤫",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_yogibabu_4",
+   "category": "tm_yogibabu",
+   "title": "Waiting for Biryani",
+   "caption": "{a} order pannittu 3 maninerama door paarkiraan",
+   "emoji": "🚪",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_yogibabu_5",
+   "category": "tm_yogibabu",
+   "title": "Cool Maama",
+   "caption": "{a}: tension illa, pension illa, only pizza",
+   "emoji": "🍕",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vivek_1",
+   "category": "tm_vivek",
+   "title": "Punch + Message",
+   "caption": "{a}: sirikka vachittu, sindhikka vachitaan",
+   "emoji": "💡",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_vivek_2",
+   "category": "tm_vivek",
+   "title": "Sema Punch",
+   "caption": "{a} oru line-la pillaiyaarai thookiduvaan",
+   "emoji": "🥊",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vivek_3",
+   "category": "tm_vivek",
+   "title": "Mokkai Master",
+   "caption": "{a} kitta sonna visayam, college muzhuka theriyum",
+   "emoji": "📣",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vivek_4",
+   "category": "tm_vivek",
+   "title": "Idhu Dhaan Life",
+   "caption": "{a}: 'Salary vandhadhum bill, bill, bill...'",
+   "emoji": "🧾",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vivek_5",
+   "category": "tm_vivek",
+   "title": "Green Tamil Nadu",
+   "caption": "{a}: oru maram nadanum. Aana yaar water oothrathu?",
+   "emoji": "🌱",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_soori_1",
+   "category": "tm_soori",
+   "title": "Parotta Mode",
+   "caption": "{a} 10 parotta saappitu 'Innum konjam irukku' nu solraan",
+   "emoji": "🫓",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_soori_2",
+   "category": "tm_soori",
+   "title": "Hotel Scene",
+   "caption": "{a}: 'Bill ellam {b} paathukuvaan'",
+   "emoji": "🍽️",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_soori_3",
+   "category": "tm_soori",
+   "title": "Kabaddi Kabaddi",
+   "caption": "{a} gym la 5 min. Selfie la 50 min.",
+   "emoji": "🤼",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_soori_4",
+   "category": "tm_soori",
+   "title": "Naan Thaan Hero",
+   "caption": "{a} oru selfie-ku 40 takes edukkiraan",
+   "emoji": "🤳",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_soori_5",
+   "category": "tm_soori",
+   "title": "Idli Level Thoongu",
+   "caption": "{a} Sunday: dhoongu, saapdu, dhoongu, repeat",
+   "emoji": "😴",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_rajini_1",
+   "category": "tm_rajini",
+   "title": "Super Star Entry",
+   "caption": "{a} office-ku vandhaa: slow motion, background music",
+   "emoji": "🎬",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_rajini_2",
+   "category": "tm_rajini",
+   "title": "Mind It!",
+   "caption": "{a}: 'Naan oru thadava sonna, nooru thadava sonna maadhiri'",
+   "emoji": "🧠",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_rajini_3",
+   "category": "tm_rajini",
+   "title": "Style Level Max",
+   "caption": "{a} sunglasses poda, tamil nadu stop aagum",
+   "emoji": "😎",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_rajini_4",
+   "category": "tm_rajini",
+   "title": "Kabali Da!",
+   "caption": "{a} Monday kaalaila: 'Mass ah vandhutten'",
+   "emoji": "🔥",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_rajini_5",
+   "category": "tm_rajini",
+   "title": "Thalaivar Nirantharam",
+   "caption": "{a}: Super! Superu! Sema superu!",
+   "emoji": "⭐",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_kamal_1",
+   "category": "tm_kamal",
+   "title": "Ulaga Nayagan",
+   "caption": "{a} oru naalaiku 10 vesham: student, cook, driver, drama",
+   "emoji": "🌍",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": true
+  },
+  {
+   "id": "tm_kamal_2",
+   "category": "tm_kamal",
+   "title": "Dasavathaaram",
+   "caption": "{a} Sunday: dhoongu, phone, dhoongu, saapaadu, phone",
+   "emoji": "🎭",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_kamal_3",
+   "category": "tm_kamal",
+   "title": "Multi Talent",
+   "caption": "{a}: paadum, aadum, samaikkum, aana vela seiyaadhu",
+   "emoji": "🎤",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_kamal_4",
+   "category": "tm_kamal",
+   "title": "Aalavandhaan Mode",
+   "caption": "{a} oru exam-kku ten books. Padikka onnum illa.",
+   "emoji": "📚",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_kamal_5",
+   "category": "tm_kamal",
+   "title": "Anbe Sivam",
+   "caption": "{a}: 'Anbu dhaan ellam'. Aana last biryani piece enakku.",
+   "emoji": "❤️",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijay_1",
+   "category": "tm_vijay",
+   "title": "Thalapathy Entry",
+   "caption": "{a} party-ku vandhaa: whistle, flash, selfie",
+   "emoji": "📸",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": true
+  },
+  {
+   "id": "tm_vijay_2",
+   "category": "tm_vijay",
+   "title": "Nanba Nanbi",
+   "caption": "{a}: 'Nanba, enna problem?' Ellarum: 'Nee thaan problem'",
+   "emoji": "🤝",
+   "colors": [
+    "#AB47BC",
+    "#4A148C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijay_3",
+   "category": "tm_vijay",
+   "title": "Mass Dance",
+   "caption": "{a} wedding la dance floor-a thookiduvaan",
+   "emoji": "💃",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijay_4",
+   "category": "tm_vijay",
+   "title": "Selfie Time",
+   "caption": "{a}: oru selfie, oru kudumbam, oru like",
+   "emoji": "🤳",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijay_5",
+   "category": "tm_vijay",
+   "title": "Vaathi Coming",
+   "caption": "{a}: 'Monday varudhu...' Ellarum: 'Vaathi coming!'",
+   "emoji": "🎶",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_ajith_1",
+   "category": "tm_ajith",
+   "title": "Thala Style",
+   "caption": "{a}: 'Vaazhu, vaazhavidu'. Aana en biryani-a vitudu.",
+   "emoji": "🏍️",
+   "colors": [
+    "#212121",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_ajith_2",
+   "category": "tm_ajith",
+   "title": "Mass Entry: Thala",
+   "caption": "{a} 10 minute late-a vandhaalum, stylish-a",
+   "emoji": "😎",
+   "colors": [
+    "#EC407A",
+    "#6A1B9A"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_ajith_3",
+   "category": "tm_ajith",
+   "title": "Bike Trip Plan",
+   "caption": "{a} Ladakh trip plan panraan. Chai kudikka kooda velila pogala.",
+   "emoji": "🛵",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_ajith_4",
+   "category": "tm_ajith",
+   "title": "Silent Mass",
+   "caption": "{a} pesama irundhaalum, aura level 1000",
+   "emoji": "🔊",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_ajith_5",
+   "category": "tm_ajith",
+   "title": "Thala Da!",
+   "caption": "{a}: 'Enakku pudichadhu dhaan seiven'",
+   "emoji": "🤟",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_suriya_1",
+   "category": "tm_suriya",
+   "title": "Singam Mode",
+   "caption": "{a} 8 mani meeting-ku 7:59-ku vandhu 'Singam' pose",
+   "emoji": "🦁",
+   "colors": [
+    "#26A69A",
+    "#004D40"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_suriya_2",
+   "category": "tm_suriya",
+   "title": "Gajini Memory",
+   "caption": "{a}: 'Enna sonnaen?' 5 nimisham munnadi dhaan sonnaen",
+   "emoji": "🧠",
+   "colors": [
+    "#5C6BC0",
+    "#1A237E"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_suriya_3",
+   "category": "tm_suriya",
+   "title": "Anjaan Anjaadhe",
+   "caption": "{a} lift-la: 'Padhinettu maadi'. Aana staircase edukkaadhe.",
+   "emoji": "🛗",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_suriya_4",
+   "category": "tm_suriya",
+   "title": "Fit & Fine",
+   "caption": "{a} gym la 6 pack. Bag la 6 bun.",
+   "emoji": "💪",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_suriya_5",
+   "category": "tm_suriya",
+   "title": "Vaaranam Aayiram",
+   "caption": "{a}: nalla appa, nalla magan, nalla biriyani fan",
+   "emoji": "❤️",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_dhanush_1",
+   "category": "tm_dhanush",
+   "title": "Underdog Hero",
+   "caption": "{a}: 'Mudiyaadhu'. Aana mudichittaan. Surprise!",
+   "emoji": "💪",
+   "colors": [
+    "#FF6B9D",
+    "#C2185B"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_dhanush_2",
+   "category": "tm_dhanush",
+   "title": "Rowdy Baby Mode",
+   "caption": "{a} dance floor la: free energy, zero shame",
+   "emoji": "💃",
+   "colors": [
+    "#7C4DFF",
+    "#311B92"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_dhanush_3",
+   "category": "tm_dhanush",
+   "title": "Kolaveri Di",
+   "caption": "{a} Monday: 'Why this Monday-di?'",
+   "emoji": "🎶",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_dhanush_4",
+   "category": "tm_dhanush",
+   "title": "Thiruvilaiyaadal",
+   "caption": "{a} + {b}: oru jodi, oru plan, oru confusion",
+   "emoji": "🎲",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_dhanush_5",
+   "category": "tm_dhanush",
+   "title": "Raanjhanaa Feelings",
+   "caption": "{a} crush-ku 'Hi' type panni 3 nimisham delete",
+   "emoji": "💔",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijaysethupathi_1",
+   "category": "tm_vijaysethupathi",
+   "title": "Makkal Selvan Vibe",
+   "caption": "{a}: simple, jolly, ellarukkum friend",
+   "emoji": "🤗",
+   "colors": [
+    "#FFB300",
+    "#E65100"
+   ],
+   "pattern": "stripes",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
+   "trending": false
+  },
+  {
+   "id": "tm_vijaysethupathi_2",
+   "category": "tm_vijaysethupathi",
+   "title": "Super Deluxe Scenes",
+   "caption": "{a} family WhatsApp group-la: 'Hmm' mattum",
+   "emoji": "💬",
+   "colors": [
+    "#26C6DA",
+    "#00695C"
+   ],
+   "pattern": "grid",
+   "textColor": "#FFFFFF",
+   "font": "serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijaysethupathi_3",
+   "category": "tm_vijaysethupathi",
+   "title": "Natural Acting",
+   "caption": "{a} acting seiyala. Real-a angry dhaan.",
+   "emoji": "😤",
+   "colors": [
+    "#FF7043",
+    "#B71C1C"
+   ],
+   "pattern": "confetti",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijaysethupathi_4",
+   "category": "tm_vijaysethupathi",
+   "title": "Naanum Rowdy Dhaan",
+   "caption": "{a} auto-la: 'Anna, meter podunga'. Auto: 'Illa'.",
+   "emoji": "🛺",
+   "colors": [
+    "#66BB6A",
+    "#1B5E20"
+   ],
+   "pattern": "rays",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif",
+   "trending": false
+  },
+  {
+   "id": "tm_vijaysethupathi_5",
+   "category": "tm_vijaysethupathi",
+   "title": "96 Memories",
+   "caption": "{a}: 'Andha kaalam thirumba varaadhaa?' Biryani: 'Varum'",
+   "emoji": "🌧️",
+   "colors": [
+    "#42A5F5",
+    "#0D47A1"
+   ],
+   "pattern": "dots",
+   "textColor": "#FFFFFF",
+   "font": "sans-serif-condensed",
    "trending": false
   }
  ]

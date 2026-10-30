@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
+import '../../models/content.dart';
 import '../../models/poster_models.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
@@ -25,7 +26,8 @@ class _PostersScreenState extends ConsumerState<PostersScreen> {
     super.dispose();
   }
 
-  List<PosterTemplate> _visible(List<PosterTemplate> all, Set<String> favs) {
+  List<PosterTemplate> _visible(AppContent content, Set<String> favs) {
+    final all = content.templates;
     Iterable<PosterTemplate> r = all;
     switch (_filter) {
       case 'all':
@@ -35,16 +37,25 @@ class _PostersScreenState extends ConsumerState<PostersScreen> {
       case 'favorites':
         r = r.where((t) => favs.contains(FavoritesNotifier.posterKey(t.id)));
       default:
-        r = r.where((t) => t.category == _filter);
+        r = r.where((t) => content.inCategory(t.category, _filter));
     }
-    return r.where((t) => t.matches(_search.text)).toList();
+    final q = _search.text.trim().toLowerCase();
+    return r.where((t) {
+      if (t.matches(q)) return true;
+      final c = content.categoryById(t.category);
+      return c != null && c.name.toLowerCase().contains(q);
+    }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     final content = ref.watch(contentProvider);
     final favs = ref.watch(favoritesProvider).value ?? <String>{};
-    final items = _visible(content.templates, favs);
+    final items = _visible(content, favs);
+    // Selected top-level category (or the parent of a selected sub-category).
+    final selected = content.categoryById(_filter);
+    final parentId = selected?.parent ?? selected?.id;
+    final subs = parentId == null ? const <PosterCategory>[] : content.childrenOf(parentId);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Posters'),
@@ -99,16 +110,38 @@ class _PostersScreenState extends ConsumerState<PostersScreen> {
                 CategoryChip(label: 'All', emoji: '✨', selected: _filter == 'all', onTap: () => setState(() => _filter = 'all')),
                 CategoryChip(label: 'Trending', emoji: '🔥', selected: _filter == 'trending', onTap: () => setState(() => _filter = 'trending')),
                 CategoryChip(label: 'Favorites', emoji: '❤️', selected: _filter == 'favorites', onTap: () => setState(() => _filter = 'favorites')),
-                for (final c in content.categories)
+                for (final c in content.topCategories)
                   CategoryChip(
                     label: c.name,
                     emoji: c.emoji,
-                    selected: _filter == c.id,
+                    selected: _filter == c.id || selected?.parent == c.id,
                     onTap: () => setState(() => _filter = c.id),
                   ),
               ],
             ),
           ),
+          if (subs.isNotEmpty)
+            SizedBox(
+              height: 48,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: Spacing.md),
+                children: [
+                  CategoryChip(
+                    label: 'All ${content.categoryById(parentId!)!.name}',
+                    selected: _filter == parentId,
+                    onTap: () => setState(() => _filter = parentId),
+                  ),
+                  for (final c in subs)
+                    CategoryChip(
+                      label: c.name,
+                      emoji: c.emoji,
+                      selected: _filter == c.id,
+                      onTap: () => setState(() => _filter = c.id),
+                    ),
+                ],
+              ),
+            ),
           Expanded(
             child: items.isEmpty
                 ? EmptyState(
