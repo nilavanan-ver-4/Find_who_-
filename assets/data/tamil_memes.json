@@ -1,0 +1,789 @@
+{
+ "pack": "tamil_memes",
+ "name": "Tamil Memes",
+ "version": 1,
+ "categories": [
+  {
+   "id": "cinema_comedy",
+   "name": "Cinema Comedy",
+   "emoji": "🎬"
+  },
+  {
+   "id": "reaction",
+   "name": "Reactions",
+   "emoji": "😲"
+  },
+  {
+   "id": "friendship",
+   "name": "Friendship",
+   "emoji": "🤝"
+  },
+  {
+   "id": "love",
+   "name": "Love",
+   "emoji": "💔"
+  },
+  {
+   "id": "college",
+   "name": "College",
+   "emoji": "🎓"
+  },
+  {
+   "id": "office",
+   "name": "Office",
+   "emoji": "💼"
+  },
+  {
+   "id": "relatable",
+   "name": "Relatable Life",
+   "emoji": "😅"
+  },
+  {
+   "id": "youtube",
+   "name": "YouTube Comedy",
+   "emoji": "📹"
+  }
+ ],
+ "templates": [
+  {
+   "id": "TM001",
+   "title": "Confused",
+   "actor": "Vadivelu",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm001.png",
+   "aspect": 1.0,
+   "tags": [
+    "confused",
+    "shock",
+    "question"
+   ],
+   "captions": [
+    "Enna nadakkuthu inga?",
+    "என்ன நடக்குது இங்க?",
+    "Naan enga irukken? Idhu yaar veedu?",
+    "Group la ellarum pesuraanga, enakku onnum puriyala"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Exam hall la question paper paathadhum"
+    },
+    {
+     "role": "bottom",
+     "text": "Enna nadakkuthu inga?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vadivelu",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM002",
+   "title": "Crying",
+   "actor": "Vadivelu",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "reaction",
+   "image": "assets/memes/tm002.png",
+   "aspect": 1.0,
+   "tags": [
+    "cry",
+    "sad",
+    "life"
+   ],
+   "captions": [
+    "Namma life ippadithaan",
+    "நம்ம வாழ்க்கை இப்படித்தான்",
+    "Sirichu sirichu azhugaren",
+    "Ellaarum happy, naan mattum sad"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Salary vandhadhum bill, bill, bill"
+    },
+    {
+     "role": "bottom",
+     "text": "Namma life ippadithaan"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vadivelu",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM003",
+   "title": "Angry",
+   "actor": "Vadivelu",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "reaction",
+   "image": "assets/memes/tm003.png",
+   "aspect": 1.0,
+   "tags": [
+    "angry",
+    "kovam"
+   ],
+   "captions": [
+    "Dei, niruthuda!",
+    "டேய், நிறுத்துடா!",
+    "Kovam varudhu, aana biryani irukku",
+    "Thoongave vida maatreenga da"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "5 nimisham dhoongalam nu paartha"
+    },
+    {
+     "role": "bottom",
+     "text": "Dei, niruthuda!"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vadivelu",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://tamilmemes.co.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM004",
+   "title": "Sarcasm",
+   "actor": "Vivek",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm004.png",
+   "aspect": 1.0,
+   "tags": [
+    "sarcasm",
+    "smirk",
+    "glasses"
+   ],
+   "captions": [
+    "Arivu irukku, use panna maatom",
+    "அறிவு இருக்கு, ஆனா use பண்ண மாட்டோம்",
+    "Idhellam oru pozhappa?",
+    "Super, romba nalla idea (sarcasm)"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Brain irukku, aana"
+    },
+    {
+     "role": "bottom",
+     "text": "Arivu irukku, use panna maatom"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vivek",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM005",
+   "title": "Reaction",
+   "actor": "Goundamani",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm005.png",
+   "aspect": 1.0,
+   "tags": [
+    "reaction",
+    "shock",
+    "hands"
+   ],
+   "captions": [
+    "Adhu eppadi mudiyum?",
+    "அது எப்படி முடியும்?",
+    "Nambave mudiyala da",
+    "Idhu unmaiya, illa kanavaa?"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Friend: 'Naan 1 crore sambaadhichen'"
+    },
+    {
+     "role": "bottom",
+     "text": "Adhu eppadi mudiyum?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Goundamani",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://memedb.app/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM006",
+   "title": "Shock",
+   "actor": "Senthil",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "reaction",
+   "image": "assets/memes/tm006.png",
+   "aspect": 1.0,
+   "tags": [
+    "shock",
+    "scream",
+    "sweat"
+   ],
+   "captions": [
+    "Aiyo, enna aachu?",
+    "ஐயோ, என்ன ஆச்சு?",
+    "Heart beat 200 la odudhu",
+    "Naan ellaam mudinjuduchu"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Amma: 'Result vandhuduchu'"
+    },
+    {
+     "role": "bottom",
+     "text": "Aiyo, enna aachu?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Senthil",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM007",
+   "title": "No Cash",
+   "actor": "Santhanam",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm007.png",
+   "aspect": 1.0,
+   "tags": [
+    "money",
+    "wallet",
+    "cheque"
+   ],
+   "captions": [
+    "Cash illa, check-ah?",
+    "கேஷ் இல்ல, செக் ஆ?",
+    "Wallet la illa, UPI la irukku",
+    "Naalaiku tharen, nambunga"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Hotel bill vandhadhum"
+    },
+    {
+     "role": "bottom",
+     "text": "Cash illa, check-ah?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Santhanam",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM008",
+   "title": "Mass Walk",
+   "actor": "Vijay",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm008.png",
+   "aspect": 1.0,
+   "tags": [
+    "mass",
+    "walk",
+    "sunglasses"
+   ],
+   "captions": [
+    "Namma route thani route",
+    "நம்ம ரூட்டு தனி ரூட்டு",
+    "Mass entry, slow motion, background music",
+    "Naan vandhaale scene maarum"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Ellarum shortcut edukkum podhu"
+    },
+    {
+     "role": "bottom",
+     "text": "Namma route thani route"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vijay",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM009",
+   "title": "Plan Successful",
+   "actor": "Ajith",
+   "source": "Mankatha (2011), mood reference",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm009.png",
+   "aspect": 1.0,
+   "tags": [
+    "thala",
+    "plan",
+    "thumbs"
+   ],
+   "captions": [
+    "Plan successful",
+    "பிளான் சக்சஸ்",
+    "Ellam plan padi nadandhadhu",
+    "Thala style: calm, cool, done"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Last minute la assignment submit pannen"
+    },
+    {
+     "role": "bottom",
+     "text": "Plan successful"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Ajith",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM010",
+   "title": "Style",
+   "actor": "Rajinikanth",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm010.png",
+   "aspect": 1.0,
+   "tags": [
+    "style",
+    "superstar",
+    "sunglasses"
+   ],
+   "captions": [
+    "Idhu eppadi irukku?",
+    "இது எப்படி இருக்கு?",
+    "Style-ku naan dhaan",
+    "Mind it!"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Sunglass-a thookki podum podhu"
+    },
+    {
+     "role": "bottom",
+     "text": "Idhu eppadi irukku?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Rajinikanth",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://memedb.app/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM011",
+   "title": "Experience",
+   "actor": "Dhanush",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "cinema_comedy",
+   "image": "assets/memes/tm011.png",
+   "aspect": 1.0,
+   "tags": [
+    "experience",
+    "vip",
+    "wise"
+   ],
+   "captions": [
+    "Experience pesuthu",
+    "அனுபவம் பேசுது",
+    "Anubavam dhaan guru",
+    "Naan innum nalla varuven"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Interview la 'Experience?'"
+    },
+    {
+     "role": "bottom",
+     "text": "Experience pesuthu"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Dhanush",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM012",
+   "title": "Expression",
+   "actor": "Vijay Sethupathi",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "reaction",
+   "image": "assets/memes/tm012.png",
+   "aspect": 1.0,
+   "tags": [
+    "expression",
+    "acting",
+    "confused"
+   ],
+   "captions": [
+    "Enna oru nadippu!",
+    "என்ன ஒரு நடிப்பு!",
+    "Natural acting level 100",
+    "Idhu acting-ah, illa unmaiyaa?"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Oru dialogue ku 10 expression"
+    },
+    {
+     "role": "bottom",
+     "text": "Enna oru nadippu!"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vijay Sethupathi",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM013",
+   "title": "Seen, No Reply",
+   "actor": "Love failure",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "love",
+   "image": "assets/memes/tm013.png",
+   "aspect": 1.0,
+   "tags": [
+    "love",
+    "seen",
+    "rain",
+    "breakup"
+   ],
+   "captions": [
+    "Seen potta, reply illa",
+    "சீன் போட்டா, ரிப்ளை இல்ல",
+    "Blue tick irukku, bathil illa",
+    "Love failure, but biryani success"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Message pottu 3 naal aachu"
+    },
+    {
+     "role": "bottom",
+     "text": "Seen potta, reply illa"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Love failure",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://tamilmemes.co.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM014",
+   "title": "Plan Cancelled",
+   "actor": "Friendship gang",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "friendship",
+   "image": "assets/memes/tm014.png",
+   "aspect": 1.0,
+   "tags": [
+    "friends",
+    "plan",
+    "trip"
+   ],
+   "captions": [
+    "Plan pannom, cancel aachu",
+    "பிளான் பண்ணோம், கேன்சல் ஆச்சு",
+    "Group chat: dead",
+    "Trip plan: 100% pesuvom, 0% pogavom"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Trip plan: 25 members. Final: 3 members"
+    },
+    {
+     "role": "bottom",
+     "text": "Plan pannom, cancel aachu"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Friendship gang",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://memedb.app/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM015",
+   "title": "Question Paper Shock",
+   "actor": "College student",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "college",
+   "image": "assets/memes/tm015.png",
+   "aspect": 1.0,
+   "tags": [
+    "exam",
+    "college",
+    "shock"
+   ],
+   "captions": [
+    "Question paper paathadhum shock",
+    "கேள்வித்தாள் பார்த்ததும் ஷாக்",
+    "Padicha onnum varala",
+    "Ellam theriyum... aana ippo theriyala"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Question paper kaila kidaicha udane"
+    },
+    {
+     "role": "bottom",
+     "text": "Question paper paathadhum shock"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "College student",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM016",
+   "title": "Friday Evening Task",
+   "actor": "Office employee",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "office",
+   "image": "assets/memes/tm016.png",
+   "aspect": 1.0,
+   "tags": [
+    "office",
+    "friday",
+    "deadline"
+   ],
+   "captions": [
+    "Friday evening task",
+    "வெள்ளிக்கிழமை சாயங்காலம் டாஸ்க்",
+    "Weekend plan: cancelled",
+    "Naalaiku paathukalam, ippo veedu poren"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Friday 5:55 PM. Manager: 'Oru chinna task'"
+    },
+    {
+     "role": "bottom",
+     "text": "Friday evening task"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Office employee",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://tamilmemes.co.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM017",
+   "title": "Salary Day",
+   "actor": "Relatable life",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "relatable",
+   "image": "assets/memes/tm017.png",
+   "aspect": 1.0,
+   "tags": [
+    "salary",
+    "money",
+    "month end"
+   ],
+   "captions": [
+    "1st date king, 20th date beggar",
+    "1ம் தேதி ராஜா, 20ம் தேதி பிச்சைக்காரன்",
+    "Salary vandhadhum ice cream, month end la rasam",
+    "Account balance: 12 rupees"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "1st date vs 20th date"
+    },
+    {
+     "role": "bottom",
+     "text": "1st date king, 20th date beggar"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Relatable life",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM018",
+   "title": "5 Minutes More",
+   "actor": "Vadivelu",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "relatable",
+   "image": "assets/memes/tm018.png",
+   "aspect": 1.0,
+   "tags": [
+    "sleep",
+    "alarm",
+    "monday"
+   ],
+   "captions": [
+    "5 minutes more",
+    "இன்னும் 5 நிமிஷம்",
+    "Monday morning la naan",
+    "Dhoongitte iruppen, office ku late aagum"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Alarm adikkudhu"
+    },
+    {
+     "role": "bottom",
+     "text": "5 minutes more"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Vadivelu",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://www.tamilmemes.tech/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM019",
+   "title": "What Is This?",
+   "actor": "Parithabangal",
+   "source": "YouTube comedy (style reference)",
+   "category": "youtube",
+   "image": "assets/memes/tm019.png",
+   "aspect": 1.0,
+   "tags": [
+    "youtube",
+    "prank",
+    "interview"
+   ],
+   "captions": [
+    "Dei, enna da idhu?",
+    "டேய், என்னடா இது?",
+    "Prank mudinjadhum kovam",
+    "Public la ketta question, public la pathil"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "Street interview la ketta kelvi"
+    },
+    {
+     "role": "bottom",
+     "text": "Dei, enna da idhu?"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Parithabangal",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://searchmemes.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  },
+  {
+   "id": "TM020",
+   "title": "Finally Saturday",
+   "actor": "Weekend celebration",
+   "source": "Tamil cinema comedy (mood reference; scene not specified)",
+   "category": "relatable",
+   "image": "assets/memes/tm020.png",
+   "aspect": 1.0,
+   "tags": [
+    "weekend",
+    "party",
+    "saturday"
+   ],
+   "captions": [
+    "Finally Saturday!",
+    "இறுதியா சனிக்கிழமை!",
+    "Weekend mode: ON",
+    "Dhoongu, saapdu, repeat"
+   ],
+   "layers": [
+    {
+     "role": "top",
+     "text": "5 naal work mudinju"
+    },
+    {
+     "role": "bottom",
+     "text": "Finally Saturday!"
+    }
+   ],
+   "license": "Original illustration drawn by tool/generate_meme_templates.py. Not a film still; no real person's likeness.",
+   "reference": {
+    "inspiredBy": "Weekend celebration",
+    "note": "Style/mood reference only. The bundled image is an original illustration.",
+    "url": "https://tamilmemes.co.in/",
+    "imageRights": "unverified - do not bundle reference images"
+   }
+  }
+ ]
+}

@@ -32,7 +32,7 @@ class SavedPoster {
       );
 }
 
-enum HistoryKind { game, template }
+enum HistoryKind { game, template, meme }
 
 class HistoryEntry {
   const HistoryEntry({

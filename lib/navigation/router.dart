@@ -6,6 +6,8 @@ import '../features/friends/friends_screen.dart';
 import '../features/games/game_screen.dart';
 import '../features/games/games_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/memes/meme_editor_route.dart';
+import '../features/memes/memes_screen.dart';
 import '../features/posters/editor_screen.dart';
 import '../features/posters/favorites_screen.dart';
 import '../features/posters/personalize_screen.dart';
@@ -57,6 +59,12 @@ GoRouter buildRouter({String initialLocation = '/home'}) {
           }
           return EditorScreen(args: args);
         },
+      ),
+      GoRoute(path: '/memes', parentNavigatorKey: rootNavigatorKey, builder: (_, _) => const MemesScreen()),
+      GoRoute(
+        path: '/meme/:id',
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (_, state) => MemeEditorRoute(templateId: state.pathParameters['id']!),
       ),
       GoRoute(path: '/saved', parentNavigatorKey: rootNavigatorKey, builder: (_, _) => const SavedPostersScreen()),
       GoRoute(path: '/favorites', parentNavigatorKey: rootNavigatorKey, builder: (_, _) => const FavoritesScreen()),

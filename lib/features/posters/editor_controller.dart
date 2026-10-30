@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../core/utils/validators.dart';
+import '../../models/meme_template.dart';
 import '../../models/poster_doc.dart';
 import '../../models/poster_models.dart';
 
 class EditorArgs {
-  const EditorArgs({required this.doc, required this.title});
+  const EditorArgs({required this.doc, required this.title, this.suggestions = const []});
   final PosterDoc doc;
   final String title;
+
+  /// Caption ideas shown in the Text tool (memes). Tapping one replaces the
+  /// selected text or adds a new text layer.
+  final List<String> suggestions;
 }
 
 /// Holds the poster being edited plus the undo history.
@@ -143,7 +148,8 @@ class EditorController extends ChangeNotifier {
   void setLayout(PosterLayout l) {
     if (l == _doc.layout) return;
     checkpoint();
-    _set(_doc.copyWith(layout: l));
+    // Memes re-flow the image and top / bottom captions for the new format.
+    _set(_doc.isMeme ? MemeDocBuilder.reflow(_doc, l) : _doc.copyWith(layout: l));
   }
 
   void setBackground(List<Color> colors) {

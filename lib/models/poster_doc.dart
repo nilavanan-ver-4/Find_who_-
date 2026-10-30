@@ -27,7 +27,11 @@ enum PosterBorder { none, solid, dashed, double, rounded }
 
 enum ElementKind { text, sticker, photo }
 
-enum PhotoShape { rounded, circle, square }
+/// `plain` = the image with no frame, border or shadow (used by memes).
+enum PhotoShape { rounded, circle, square, plain }
+
+/// Id of the template image element in a meme poster.
+const String kMemeImageId = 'meme_img';
 
 /// Width of the design grid that font sizes refer to.
 const double kPosterBaseWidth = 360;
@@ -49,6 +53,9 @@ class PosterElement {
     this.brightness = 0,
     this.saturation = 1,
     this.flipped = false,
+    this.outline = 0,
+    this.outlineColor = const Color(0xFF000000),
+    this.align = 1,
   });
 
   final String id;
@@ -82,6 +89,14 @@ class PosterElement {
   final double saturation;
   final bool flipped;
 
+  /// Text outline width on the 360 pt grid (0 = none) and its colour.
+  final double outline;
+  final Color outlineColor;
+
+  /// 0 = left, 1 = centre, 2 = right. Anything but centre gives the text the
+  /// full width of the poster so the alignment is visible.
+  final int align;
+
   bool get isPhoto => kind == ElementKind.photo;
 
   PosterElement copyWith({
@@ -98,6 +113,9 @@ class PosterElement {
     double? brightness,
     double? saturation,
     bool? flipped,
+    double? outline,
+    Color? outlineColor,
+    int? align,
   }) =>
       PosterElement(
         id: id,
@@ -115,6 +133,9 @@ class PosterElement {
         brightness: brightness ?? this.brightness,
         saturation: saturation ?? this.saturation,
         flipped: flipped ?? this.flipped,
+        outline: outline ?? this.outline,
+        outlineColor: outlineColor ?? this.outlineColor,
+        align: align ?? this.align,
       );
 
   Map<String, dynamic> toJson() => {
@@ -133,6 +154,9 @@ class PosterElement {
         'brightness': brightness,
         'saturation': saturation,
         'flipped': flipped,
+        'outline': outline,
+        'outlineColor': outlineColor.toARGB32(),
+        'align': align,
       };
 
   factory PosterElement.fromJson(Map<String, dynamic> j) => PosterElement(
@@ -153,6 +177,9 @@ class PosterElement {
         brightness: (j['brightness'] as num?)?.toDouble() ?? 0,
         saturation: (j['saturation'] as num?)?.toDouble() ?? 1,
         flipped: j['flipped'] as bool? ?? false,
+        outline: (j['outline'] as num?)?.toDouble() ?? 0,
+        outlineColor: Color((j['outlineColor'] as int?) ?? 0xFF000000),
+        align: (j['align'] as int?) ?? 1,
       );
 
   /// A photo element placed behind the text.
@@ -213,6 +240,9 @@ class PosterDoc {
 
   PosterDoc removeElement(String id) =>
       copyWith(elements: elements.where((e) => e.id != id).toList());
+
+  /// True for posters built from a meme template.
+  bool get isMeme => elements.any((e) => e.id == kMemeImageId);
 
   PosterElement? elementById(String? id) {
     for (final e in elements) {

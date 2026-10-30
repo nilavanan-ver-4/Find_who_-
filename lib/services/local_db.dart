@@ -19,7 +19,8 @@ class DbTables {
   static const savedPosters = 'saved_posters';
   static const favorites = 'favorites';
   static const history = 'history';
-  static const values = [friends, savedPosters, favorites, history];
+  static const userMemes = 'user_memes';
+  static const values = [friends, savedPosters, favorites, history, userMemes];
 }
 
 class SqliteDb implements LocalDb {
@@ -30,16 +31,22 @@ class SqliteDb implements LocalDb {
     final dir = await getDatabasesPath();
     final db = await openDatabase(
       p.join(dir, 'find_who.db'),
-      version: 1,
+      version: 2,
       onCreate: (db, _) async {
         for (final t in DbTables.values) {
-          await db.execute(
-              'CREATE TABLE $t (id TEXT PRIMARY KEY, created_at INTEGER NOT NULL, json TEXT NOT NULL)');
+          await _createTable(db, t);
         }
+      },
+      // v2 added the table for templates the user adds themselves.
+      onUpgrade: (db, from, to) async {
+        if (from < 2) await _createTable(db, DbTables.userMemes);
       },
     );
     return SqliteDb._(db);
   }
+
+  static Future<void> _createTable(Database db, String t) => db.execute(
+      'CREATE TABLE IF NOT EXISTS $t (id TEXT PRIMARY KEY, created_at INTEGER NOT NULL, json TEXT NOT NULL)');
 
   @override
   Future<List<Map<String, dynamic>>> all(String table) async {

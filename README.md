@@ -6,6 +6,10 @@ resolution, and play 16 party games on one phone. No sign-in, no ads, no analyti
 * **Posters** – 166 ready-made templates: 19 categories plus Tamil Memes with a sub-category for each actor, searchable, favourites, a live editor
   (drag to move, pinch or corner handle to resize and rotate, red button to delete; photos with shape, crop, flip, brightness and saturation; stickers you can tap or drag-and-drop onto the poster; fonts, colours, borders, backgrounds, patterns, undo/reset),
   square / portrait / story formats, export at 1080 px wide with no watermark.
+* **Tamil Memes** – 20 blank meme templates (TM001–TM020) in a searchable iPhone-style grid with category
+  filters, favourites and recently used. Opens a full-screen editor with Tamil Unicode fonts, caption
+  suggestions (Tamil script and Tanglish), several text layers with font, size, colour, outline, alignment,
+  rotation and position, emojis and stickers. Export 1:1, 4:5 or 9:16, save to the gallery or share.
 * **Games** – Truth or Dare (3 levels, categories, skip), Would You Rather, Most Likely To (+ Reply Late Champion,
   Drama King/Queen, Always Hungry, Most Dramatic Friend), Never Have I Ever, Spin the Wheel (custom options),
   Friendship Quiz (playful titles), Who Knows Whom Best, Guess the Friend, Guess the Emoji, Complete the Sentence,
@@ -44,7 +48,7 @@ flutter run                      # on a connected Android device / emulator
 
 ```bash
 flutter analyze
-flutter test                     # 70 unit + widget tests
+flutter test                     # 99 unit + widget tests
 ```
 
 ## Android build
@@ -93,3 +97,51 @@ New *game types* need a small widget in `lib/features/games` and an entry in `ga
 
 Friends, photos and posters stay on the device. Nothing is uploaded; posters only leave the phone when you
 share or save them. Cloud sync, accounts and online multiplayer are deliberately not part of v1.
+
+## Tamil Memes
+
+### Templates and images
+The 20 bundled templates live in `assets/data/tamil_memes.json` (ID, title, comedian/actor, source, category,
+image, aspect, tags, suggested captions, default text layers, licence, reference). The pictures
+(`assets/memes/tm001.png` … `tm020.png`) are **original cartoon illustrations** drawn by
+`tool/generate_meme_templates.py`; they are not film stills and do not show any real person. The
+"comedian / actor" and "source" fields describe the comedy style or scene that inspired the caption idea.
+
+The reference links you collected are in `docs/tamil_meme_references.md` and as metadata only. **No image from
+those sites is bundled.** Put third-party reference images in `reference_images/` (git-ignored, never listed in
+`pubspec.yaml`) and only move one into a pack after you have verified you may distribute it.
+
+### Fonts (all SIL Open Font License, licences in `assets/fonts/`)
+Mukta Malar (Tamil + Latin, 3 weights), Baloo Thambi 2 (fun Tamil), Anton and Bangers (English meme/comic).
+Every text style falls back to Mukta Malar, so Tamil renders correctly even if a Latin-only font is chosen.
+
+### Adding templates without changing code
+* **In the app:** Tamil Memes → *Add template*: pick an image, name it, choose a category. It is stored in
+  SQLite plus a private copy of the image and works offline. You must confirm you have the right to use the image.
+* **Template packs:** create `<app files folder>/meme_packs/<pack name>/pack.json` with the images next to it
+  (Android: `/sdcard/Android/data/com.findwho.find_who/files/meme_packs/`, reachable with a file manager or
+  `adb push`). The app reads packs at start-up; a broken pack or missing image is skipped, never fatal.
+
+```json
+{
+  "pack": "my_pack",
+  "categories": [{ "id": "fun", "name": "Fun", "emoji": "🎉" }],
+  "templates": [{
+    "id": "MY001", "title": "Surprised cat", "actor": "", "source": "My photo",
+    "category": "fun", "image": "cat.png", "aspect": 1.0,
+    "tags": ["cat"], "captions": ["Enna da idhu?", "என்னடா இது?"],
+    "layers": [{ "role": "top", "text": "" }, { "role": "bottom", "text": "Enna da idhu?" }]
+  }]
+}
+```
+
+To add to the bundled set instead, append to `assets/data/tamil_memes.json` and drop the image in `assets/memes/`.
+
+### Performance and offline
+Bundled images and your own templates are read from local storage, so everything works offline. Grid thumbnails
+are decoded at card size (`cacheWidth`), cards are repaint-isolated and the grid is a lazy sliver, which keeps
+scrolling smooth on budget phones. The full 20-image set is about 0.6 MB.
+
+### Sharing
+Share opens Android's share sheet, where WhatsApp, Instagram, Telegram and others are listed. (A one-tap
+WhatsApp-only button would need a native Android channel; it can be added later.)

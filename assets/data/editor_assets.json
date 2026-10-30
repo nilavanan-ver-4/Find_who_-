@@ -103,6 +103,22 @@
  ],
  "fonts": [
   {
+   "id": "MuktaMalar",
+   "label": "தமிழ் Bold"
+  },
+  {
+   "id": "BalooThambi2",
+   "label": "தமிழ் Fun"
+  },
+  {
+   "id": "Anton",
+   "label": "Meme"
+  },
+  {
+   "id": "Bangers",
+   "label": "Comic"
+  },
+  {
    "id": "sans-serif",
    "label": "Clean"
   },

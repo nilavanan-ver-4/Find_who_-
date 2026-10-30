@@ -19,6 +19,7 @@ class SettingsScreen extends ConsumerWidget {
     final savedCount = ref.watch(savedPostersProvider).value?.length ?? 0;
     final friendCount = ref.watch(friendsProvider).value?.length ?? 0;
     final historyCount = ref.watch(historyProvider).value?.length ?? 0;
+    final myMemes = ref.watch(userMemesProvider).value?.length ?? 0;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Profile & settings')),
@@ -106,6 +107,8 @@ class SettingsScreen extends ConsumerWidget {
               'Remove all saved friends and their photos?', () => ref.read(friendsProvider.notifier).clear()),
           _clearTile(context, ref, Icons.favorite_outline, 'Clear favorites', '$favCount items',
               'Remove all favorite posters and games?', () => ref.read(favoritesProvider.notifier).clear()),
+          _clearTile(context, ref, Icons.sentiment_very_satisfied_outlined, 'Clear my meme templates', '$myMemes templates',
+              'Delete the meme templates you added yourself?', () => ref.read(userMemesProvider.notifier).clear()),
           _clearTile(context, ref, Icons.history, 'Clear history', '$historyCount entries',
               'Clear recently played and recently used history?', () => ref.read(historyProvider.notifier).clear()),
           ListTile(
@@ -120,6 +123,7 @@ class SettingsScreen extends ConsumerWidget {
               if (!ok) return;
               await ref.read(savedPostersProvider.notifier).clear();
               await ref.read(friendsProvider.notifier).clear();
+              await ref.read(userMemesProvider.notifier).clear();
               await ref.read(favoritesProvider.notifier).clear();
               await ref.read(historyProvider.notifier).clear();
               await ref.read(fileStoreProvider).clearPhotos();

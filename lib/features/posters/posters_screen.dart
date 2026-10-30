@@ -8,6 +8,7 @@ import '../../models/poster_models.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import '../../widgets/poster_widgets.dart';
+import '../../widgets/memes_banner.dart';
 
 class PostersScreen extends ConsumerStatefulWidget {
   const PostersScreen({super.key, this.initialCategory});
@@ -82,6 +83,10 @@ class _PostersScreenState extends ConsumerState<PostersScreen> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(Spacing.md, 0, Spacing.md, Spacing.sm),
+            child: MemesBanner(count: ref.watch(allMemesProvider).templates.length, compact: true),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(Spacing.md, 0, Spacing.md, Spacing.sm),
             child: TextField(

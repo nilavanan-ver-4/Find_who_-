@@ -198,7 +198,10 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
                 children: [
                   Expanded(child: _posterArea()),
                   _toolBar(),
-                  SizedBox(height: 190, child: _panel(content)),
+                  SizedBox(
+                    height: (_tool == _Tool.text || _tool == _Tool.photo) ? 236 : 190,
+                    child: _panel(content),
+                  ),
                   _actionBar(),
                 ],
               ),
@@ -408,6 +411,27 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
             ],
           ),
         ),
+        if (widget.args.suggestions.isNotEmpty)
+          SizedBox(
+            height: 44,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: 8),
+                  child: Center(child: Text('💡', style: TextStyle(fontSize: 20))),
+                ),
+                for (final sug in widget.args.suggestions)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: ActionChip(
+                      label: Text(sug.length > 30 ? '${sug.substring(0, 30)}…' : sug),
+                      onPressed: () => _applySuggestion(sug),
+                    ),
+                  ),
+              ],
+            ),
+          ),
         const SizedBox(height: 4),
         if (e == null)
           const Padding(
@@ -476,12 +500,57 @@ class _EditorScreenState extends ConsumerState<EditorScreen> {
             ),
             const SizedBox(height: 8),
             _swatches(content.palette, e.color, (col) => _c.updateSelected((x) => x.copyWith(color: col))),
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                const Icon(Icons.border_color_outlined),
+                Expanded(
+                  child: Slider(
+                    min: 0,
+                    max: 10,
+                    divisions: 20,
+                    label: e.outline.toStringAsFixed(1),
+                    value: e.outline.clamp(0, 10).toDouble(),
+                    onChangeStart: (_) => _c.checkpoint(),
+                    onChanged: (v) => _c.liveUpdateSelected((x) => x.copyWith(outline: v)),
+                  ),
+                ),
+              ],
+            ),
+            if (e.outline > 0)
+              _swatches(content.palette, e.outlineColor, (col) => _c.updateSelected((x) => x.copyWith(outlineColor: col))),
+            const SizedBox(height: 6),
+            SegmentedButton<int>(
+              showSelectedIcon: false,
+              segments: const [
+                ButtonSegment(value: 0, icon: Icon(Icons.format_align_left), tooltip: 'Align left'),
+                ButtonSegment(value: 1, icon: Icon(Icons.format_align_center), tooltip: 'Align centre'),
+                ButtonSegment(value: 2, icon: Icon(Icons.format_align_right), tooltip: 'Align right'),
+              ],
+              selected: {e.align},
+              onSelectionChanged: (v) => _c.updateSelected((x) => x.copyWith(align: v.first)),
+            ),
             _rotationRow(e),
           ],
         ],
         const SizedBox(height: 8),
       ],
     );
+  }
+
+  /// Replaces the selected text with a suggestion, or adds it as a new layer.
+  void _applySuggestion(String text) {
+    final e = _c.selected;
+    if (e != null && e.kind == ElementKind.text) {
+      _c.updateSelected((x) => x.copyWith(text: text));
+      return;
+    }
+    final err = _c.addText(text);
+    if (err != null) showSnack(context, err);
+    final added = _c.selected;
+    if (added != null && _c.doc.isMeme) {
+      _c.updateSelected((x) => x.copyWith(font: 'MuktaMalar', outline: 4, outlineColor: Colors.black), checkpointFirst: false);
+    }
   }
 
   Future<void> _addTextDialog() async {

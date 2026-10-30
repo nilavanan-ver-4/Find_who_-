@@ -10,6 +10,7 @@ import '../../models/records.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import '../../widgets/poster_widgets.dart';
+import '../../widgets/memes_banner.dart';
 import '../games/game_registry.dart';
 import '../games/game_widgets.dart';
 
@@ -88,6 +89,12 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(Spacing.md, Spacing.lg, Spacing.md, 0),
+              child: MemesBanner(count: ref.watch(allMemesProvider).templates.length),
             ),
           ),
           SliverToBoxAdapter(child: _section(context, 'Trending posters', 'See all', () => context.go('/posters'))),

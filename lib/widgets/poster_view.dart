@@ -6,19 +6,37 @@ import 'package:flutter/material.dart';
 import '../models/poster_doc.dart';
 import '../models/poster_models.dart';
 
-TextStyle posterTextStyle(PosterElement e, double scale) {
+/// Families that always back up the chosen font so Tamil text renders even
+/// when a Latin-only font (Anton, Bangers...) is selected.
+const List<String> kFontFallback = ['MuktaMalar', 'sans-serif'];
+
+TextStyle posterTextStyle(PosterElement e, double scale, {Color? colorOverride, Paint? foreground}) {
   final isSticker = e.kind == ElementKind.sticker;
+  final shadowless = e.outline > 0;
   return TextStyle(
     fontSize: e.size * scale,
-    color: e.color,
+    color: foreground == null ? (colorOverride ?? e.color) : null,
+    foreground: foreground,
     fontFamily: isSticker ? null : e.font,
+    fontFamilyFallback: isSticker ? null : kFontFallback,
+    fontVariations: e.font == 'BalooThambi2'
+        ? [FontVariation('wght', e.bold ? 800 : 500)]
+        : null,
     fontWeight: e.bold ? FontWeight.w900 : FontWeight.w600,
     height: isSticker ? 1.1 : 1.2,
-    shadows: isSticker || e.color.computeLuminance() > 0.7
-        ? [Shadow(color: const Color(0x66000000), blurRadius: 4 * scale, offset: Offset(1.5 * scale, 2 * scale))]
-        : null,
+    shadows: shadowless
+        ? null
+        : isSticker || e.color.computeLuminance() > 0.7
+            ? [Shadow(color: const Color(0x66000000), blurRadius: 4 * scale, offset: Offset(1.5 * scale, 2 * scale))]
+            : null,
   );
 }
+
+TextAlign textAlignOf(PosterElement e) => switch (e.align) {
+      0 => TextAlign.left,
+      2 => TextAlign.right,
+      _ => TextAlign.center,
+    };
 
 /// Max width an element may occupy, as a fraction of the poster width.
 const double kElementMaxWidthFraction = 0.88;
@@ -29,12 +47,13 @@ Size measureElement(PosterElement e, double posterWidth) {
     final w = e.size * scale;
     return Size(w, w / e.aspect);
   }
+  final maxW = posterWidth * kElementMaxWidthFraction;
   final tp = TextPainter(
     text: TextSpan(text: e.text, style: posterTextStyle(e, scale)),
     textDirection: TextDirection.ltr,
-    textAlign: TextAlign.center,
-  )..layout(maxWidth: posterWidth * kElementMaxWidthFraction);
-  final size = Size(tp.width, tp.height);
+    textAlign: textAlignOf(e),
+  )..layout(maxWidth: maxW);
+  final size = Size(e.align == 1 ? tp.width : maxW, tp.height);
   tp.dispose();
   return size;
 }
@@ -66,22 +85,33 @@ class PosterPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final e = element;
+    final plain = e.shape == PhotoShape.plain;
     final radius = switch (e.shape) {
-      PhotoShape.square => 0.0,
+      PhotoShape.square || PhotoShape.plain => 0.0,
       PhotoShape.rounded => size.shortestSide * 0.12,
       PhotoShape.circle => size.shortestSide,
     };
-    Widget image = Image.file(
-      File(e.text),
-      fit: BoxFit.cover,
-      width: size.width,
-      height: size.height,
-      cacheWidth: cacheWidth,
-      errorBuilder: (_, _, _) => const ColoredBox(
-        color: Color(0x33000000),
-        child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white70)),
-      ),
-    );
+    Widget errorBuilder(BuildContext _, Object error, StackTrace? stack) => const ColoredBox(
+          color: Color(0x33000000),
+          child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white70)),
+        );
+    Widget image = e.text.startsWith('asset:')
+        ? Image.asset(
+            e.text.substring('asset:'.length),
+            fit: BoxFit.cover,
+            width: size.width,
+            height: size.height,
+            cacheWidth: cacheWidth,
+            errorBuilder: errorBuilder,
+          )
+        : Image.file(
+            File(e.text),
+            fit: BoxFit.cover,
+            width: size.width,
+            height: size.height,
+            cacheWidth: cacheWidth,
+            errorBuilder: errorBuilder,
+          );
     if (e.brightness != 0 || e.saturation != 1) {
       image = ColorFiltered(
         colorFilter: ColorFilter.matrix(photoColorMatrix(e.brightness, e.saturation)),
@@ -89,6 +119,7 @@ class PosterPhoto extends StatelessWidget {
       );
     }
     if (e.flipped) image = Transform.flip(flipX: true, child: image);
+    if (plain) return SizedBox(width: size.width, height: size.height, child: image);
     return SizedBox(
       width: size.width,
       height: size.height,
@@ -145,14 +176,7 @@ class PosterView extends StatelessWidget {
                                 size: measureElement(e, w),
                                 cacheWidth: photoCacheWidth,
                               )
-                            : ConstrainedBox(
-                                constraints: BoxConstraints(maxWidth: w * kElementMaxWidthFraction),
-                                child: Text(
-                                  e.text,
-                                  textAlign: TextAlign.center,
-                                  style: posterTextStyle(e, scale),
-                                ),
-                              ),
+                            : PosterText(element: e, scale: scale, maxWidth: w * kElementMaxWidthFraction),
                       ),
                     ),
                   ),
@@ -161,6 +185,40 @@ class PosterView extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+/// Text with optional outline and alignment, as drawn on posters and memes.
+class PosterText extends StatelessWidget {
+  const PosterText({super.key, required this.element, required this.scale, required this.maxWidth});
+  final PosterElement element;
+  final double scale;
+  final double maxWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    final e = element;
+    final align = textAlignOf(e);
+    final fill = Text(e.text, textAlign: align, style: posterTextStyle(e, scale));
+    Widget child = fill;
+    if (e.outline > 0 && e.kind != ElementKind.sticker) {
+      final stroke = Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeJoin = StrokeJoin.round
+        ..strokeWidth = e.outline * scale * 2
+        ..color = e.outlineColor;
+      child = Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Text(e.text, textAlign: align, style: posterTextStyle(e, scale, foreground: stroke)),
+          fill,
+        ],
+      );
+    }
+    return SizedBox(
+      width: e.align == 1 ? null : maxWidth,
+      child: ConstrainedBox(constraints: BoxConstraints(maxWidth: maxWidth), child: child),
     );
   }
 }

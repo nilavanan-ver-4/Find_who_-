@@ -46,3 +46,7 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Third-party reference images stay local until usage rights are verified
+/reference_images/*
+!/reference_images/README.md

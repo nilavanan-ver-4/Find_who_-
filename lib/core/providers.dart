@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/content.dart';
 import '../models/friend.dart';
+import '../models/meme_template.dart';
 import '../models/records.dart';
 import '../services/feedback_service.dart';
 import '../services/file_store.dart';
@@ -16,6 +17,9 @@ import 'utils/random_picker.dart';
 // ---- Overridden at start-up (see main.dart) --------------------------------
 final contentProvider = Provider<AppContent>((ref) => throw UnimplementedError());
 final dbProvider = Provider<LocalDb>((ref) => throw UnimplementedError());
+
+/// Bundled + external-pack meme templates, loaded once at start-up.
+final memeCatalogProvider = Provider<MemeCatalog>((ref) => MemeCatalog.empty);
 final prefsProvider =
     Provider<SharedPreferences>((ref) => throw UnimplementedError());
 
@@ -274,3 +278,63 @@ List<HistoryEntry> recentUnique(List<HistoryEntry> all, HistoryKind kind,
   }
   return out;
 }
+
+// ---- Meme templates ---------------------------------------------------------------
+String memeKey(String id) => 'meme:$id';
+
+/// Templates the user added from their own images.
+class UserMemesNotifier extends AsyncNotifier<List<MemeTemplate>> {
+  LocalDb get _db => ref.read(dbProvider);
+
+  MemeTemplate _parse(Map<String, dynamic> j) => MemeTemplate.fromJson(
+        j,
+        imageResolver: (img) => img,
+        isUser: true,
+        pack: 'mine',
+      );
+
+  @override
+  Future<List<MemeTemplate>> build() async {
+    final rows = await _db.all(DbTables.userMemes);
+    final out = <MemeTemplate>[];
+    for (final r in rows) {
+      try {
+        out.add(_parse(r));
+      } catch (_) {
+        // Skip rows that can't be read instead of failing the whole list.
+      }
+    }
+    return out;
+  }
+
+  List<MemeTemplate> get _current => state.value ?? const [];
+
+  Future<void> add(MemeTemplate t) async {
+    await _db.put(DbTables.userMemes, t.id, t.toUserJson());
+    state = AsyncData([t, ..._current.where((x) => x.id != t.id)]);
+  }
+
+  Future<void> remove(MemeTemplate t) async {
+    await _db.remove(DbTables.userMemes, t.id);
+    await ref.read(fileStoreProvider).delete(t.imageRef);
+    state = AsyncData(_current.where((x) => x.id != t.id).toList());
+  }
+
+  Future<void> clear() async {
+    for (final t in _current) {
+      await ref.read(fileStoreProvider).delete(t.imageRef);
+    }
+    await _db.clear(DbTables.userMemes);
+    state = const AsyncData([]);
+  }
+}
+
+final userMemesProvider =
+    AsyncNotifierProvider<UserMemesNotifier, List<MemeTemplate>>(UserMemesNotifier.new);
+
+/// Everything the meme grid shows: packs first, then the user's own templates.
+final allMemesProvider = Provider<MemeCatalog>((ref) {
+  final base = ref.watch(memeCatalogProvider);
+  final mine = ref.watch(userMemesProvider).value ?? const <MemeTemplate>[];
+  return MemeCatalog(categories: base.categories, templates: [...base.templates, ...mine]);
+});

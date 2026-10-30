@@ -469,18 +469,18 @@ void main() {
       expect(find.byIcon(Icons.broken_image_outlined), findsNothing, reason: shape.name);
     }
   });
-  testWidgets('posters: Tamil Memes shows actor sub-categories that filter templates', (tester) async {
+  testWidgets('posters: Tamil Posters shows actor sub-categories that filter templates', (tester) async {
     await pumpApp(tester, location: '/posters');
-    await tester.scrollUntilVisible(find.textContaining('Tamil Memes'), 150,
+    await tester.scrollUntilVisible(find.textContaining('Tamil Posters'), 150,
         scrollable: find.descendant(
           of: find.byWidgetPredicate((w) => w is ListView && w.scrollDirection == Axis.horizontal),
           matching: find.byType(Scrollable),
         ));
-    await tester.ensureVisible(find.textContaining('Tamil Memes'));
+    await tester.ensureVisible(find.textContaining('Tamil Posters'));
     await tester.pumpAndSettle();
-    await tester.tap(find.textContaining('Tamil Memes'));
+    await tester.tap(find.textContaining('Tamil Posters'));
     await tester.pumpAndSettle();
-    expect(find.text('All Tamil Memes'), findsOneWidget);
+    expect(find.text('All Tamil Posters'), findsOneWidget);
     expect(find.textContaining('Vadivelu'), findsWidgets);
     final subRow = find.descendant(
       of: find.byWidgetPredicate((w) => w is ListView && w.scrollDirection == Axis.horizontal).at(1),
@@ -495,10 +495,10 @@ void main() {
     expect(find.text('Aiyyo Aiyyo!'), findsOneWidget);
     expect(find.text('Super Star Entry'), findsNothing); // another actor's poster is filtered out
     // Searching an actor name finds its templates from any category.
-    await tester.scrollUntilVisible(find.text('All Tamil Memes'), -100, scrollable: subRow);
-    await tester.ensureVisible(find.text('All Tamil Memes'));
+    await tester.scrollUntilVisible(find.text('All Tamil Posters'), -100, scrollable: subRow);
+    await tester.ensureVisible(find.text('All Tamil Posters'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('All Tamil Memes'));
+    await tester.tap(find.text('All Tamil Posters'));
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'rajinikanth');
     await tester.pumpAndSettle();
